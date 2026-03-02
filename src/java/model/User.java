@@ -6,13 +6,8 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author -HP-
  */
-public class Service {
-    private int id;
-    private String name;
-    private double decimal;
-    private String description;
-
+public class User {
     
 }
