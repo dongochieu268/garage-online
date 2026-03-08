@@ -21,7 +21,7 @@ public class UserDAO extends DBContext{
     public User GetById (int id){
         User user = null;
         try{
-            String strSQL = "select * from User where id = ?";
+            String strSQL = "select * from Users where id = ?";
             stm = connection.prepareCall(strSQL);
             stm.setInt(1, id);
             rs = stm.executeQuery();
@@ -39,5 +39,42 @@ public class UserDAO extends DBContext{
         return user;
     }
     
+    public User insert(User user){
+        User found = GetById(user.getId());
+        if (found != null) return null;
+        
+        try {
+            String strSQL = "insert into Users(name, phone, passWord, role) "
+                    + "values(?, ?, ?, ?)";
+            stm = connection.prepareCall(strSQL);
+            stm.setString(1, user.getName());
+            stm.setString(2, user.getPhone());
+            stm.setString(3, user.getPassWord());
+            stm.setString(4, user.getRole());
+            stm.execute();
+            if (rs.next()) {
+            user.setId(rs.getInt(1));
+            return user;
+        }
+        } catch (Exception ex) {
+            System.out.println("insert:" + ex.getMessage());
+        }
+        return null;
+    }
     
+    public boolean checkLogin(String phone, String password){
+        try{
+            String strSQL = "select * from Users where phone = ? and passWord = ?";
+            stm = connection.prepareCall(strSQL);
+            stm.setString(1, phone);
+            stm.setString(2, password);
+            ResultSet rs = stm.executeQuery();
+            if(rs.next()){
+                return true;
+            }
+        }catch(Exception ex){
+            System.out.println("checkLogin:" + ex.getMessage());
+        }
+        return false;
+    }
 }
