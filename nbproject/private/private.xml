@@ -3,9 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/D:/PRJ%20project/garage-online/src/java/ConnectDB.properties</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/model/Service.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/dal/DBContext.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/dal/serviceDAO.java</file>
+            <file>file:/D:/PRJ%20project/garage-online/src/java/dal/daotest.java</file>
+            <file>file:/D:/PRJ%20project/garage-online/web/WEB-INF/ConnectDB.properties</file>
         </group>
     </open-files>
 </project-private>

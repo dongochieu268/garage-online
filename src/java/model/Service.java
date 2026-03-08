@@ -44,7 +44,7 @@ public class Service {
         return price;
     }
 
-    public void setDecimal(double price) {
+    public void setPrice(double price) {
         this.price = price;
     }
 

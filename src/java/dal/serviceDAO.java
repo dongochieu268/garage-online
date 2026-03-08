@@ -15,59 +15,90 @@ import model.Service;
  *
  * @author ADMIN
  */
-public class serviceDAO extends DBContext{
+public class serviceDAO extends DBContext {
+
     PreparedStatement stm;
     ResultSet rs;
-    public List<Service> getAll(){
+
+    public List<Service> getAll() {
         List<Service> services = new ArrayList<>();
-        try{
+        try {
             stm = connection.prepareCall("select * from Services");
             rs = stm.executeQuery();
-            while(rs.next()){
-                int id  = rs.getInt("id");
+            while (rs.next()) {
+                int id = rs.getInt("id");
                 String name = rs.getString("name");
                 double price = rs.getDouble("price");
                 String description = rs.getString("description");
                 services.add(new Service(id, name, price, description));
             }
-        }catch(SQLException e){
-        
+        } catch (SQLException e) {
+
         }
         return services;
     }
-    
-    public Service getById(int id){
+
+    public Service getById(int id) {
         Service service = null;
-        try{
+        try {
             stm = connection.prepareCall("select * from Services where id = ?");
             stm.setInt(1, id);
             rs = stm.executeQuery();
-            
-            while(rs.next()){
-                int id1  = rs.getInt("id");
+
+            while (rs.next()) {
+                int id1 = rs.getInt("id");
                 String name = rs.getString("name");
                 double price = rs.getDouble("price");
                 String description = rs.getString("description");
                 service = new Service(id, name, price, description);
             }
-        }catch(SQLException e){
-            
+        } catch (SQLException e) {
+
         }
         return service;
     }
-    
-    public boolean insert(Service s){
-        try{
+
+    public boolean insert(Service s) {
+        try {
             stm = connection.prepareCall("insert into Services (name, price, description) values (?,?,?)");
             stm.setString(1, s.getName());
             stm.setDouble(2, s.getPrice());
             stm.setString(3, s.getDescription());
             stm.executeUpdate();
-            
-        }catch(SQLException e){
+
+        } catch (SQLException e) {
             return false;
         }
         return true;
     }
-   
+
+    public boolean update(Service s) {
+        try {
+            stm = connection.prepareCall("UPDATE [dbo].[Services]\n"
+                    + "   SET [name] = ?\n"
+                    + "      ,[price] = ?\n"
+                    + "      ,[description] = ?\n"
+                    + " WHERE [id] = ?");
+            stm.setString(1, s.getName());
+            stm.setDouble(2, s.getPrice());
+            stm.setString(3, s.getDescription());
+            stm.setInt(4, s.getId());
+            stm.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
+
+    public boolean delete(int id) {
+        try {
+            stm = connection.prepareCall("DELETE FROM [dbo].[Services]\n"
+                    + "      WHERE id = ?");
+            stm.setInt(1, id);
+            stm.executeUpdate();
+            return true;
+        } catch (SQLException e) {
+            return false;
+        }
+    }
 }
