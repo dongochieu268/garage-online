@@ -18,15 +18,15 @@ public class UserDAO extends DBContext{
     PreparedStatement stm;
     ResultSet rs;
     
-    public User GetById (int id){
+    public User GetById (String id){
         User user = null;
         try{
             String strSQL = "select * from Users where id = ?";
             stm = connection.prepareCall(strSQL);
-            stm.setInt(1, id);
+            stm.setString(1, id);
             rs = stm.executeQuery();
             while (rs.next()) {
-                int Id = rs.getInt("Id");
+                String Id = rs.getString("Id");
                 String name = rs.getString("name");
                 String phone = rs.getString("phone");
                 String password = rs.getString("password");
@@ -53,7 +53,7 @@ public class UserDAO extends DBContext{
             stm.setString(4, user.getRole());
             stm.execute();
             if (rs.next()) {
-            user.setId(rs.getInt(1));
+            user.setId(rs.getString(1));
             return user;
         }
         } catch (Exception ex) {

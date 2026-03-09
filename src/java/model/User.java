@@ -9,16 +9,16 @@ package model;
  * @author -HP-
  */
 public class User {
-    private int id;
-    private String name;
-    private String phone;
-    private String passWord;
-    private String role;
+    public String id;
+    public String name;
+    public String phone;
+    public String passWord;
+    public String role;
 
     public User() {
     }
 
-    public User(int id, String name, String phone, String passWord, String role) {
+    public User(String id, String name, String phone, String passWord, String role) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -26,11 +26,11 @@ public class User {
         this.role = role;
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
