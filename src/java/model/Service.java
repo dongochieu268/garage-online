@@ -14,8 +14,7 @@ public class Service {
     private double price;
     private String description;
 
-<<<<<<< HEAD
-=======
+
     public Service() {
     }
 
@@ -63,6 +62,5 @@ public class Service {
         return "Service{" + "id=" + id + ", name=" + name + ", price=" + price  + ", description=" + description + '}';
     }
     
->>>>>>> 709b715f46105c47697a4655f6df029efc22fea2
     
 }
