@@ -34,7 +34,7 @@
                             <label for="phone">Phone number</label>
                             <input type="tel" id="phone" name="phone" required="required" value="${requestScope.phone}"/>
                         </div>
-                            <div>${requestScope.error}</div>
+                            <div>${requestScope.error   }</div>
                         <div class="form-group">
                             <button type="submit">Sign Up</button>
                         </div>

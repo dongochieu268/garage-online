@@ -87,8 +87,16 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
         UserDAO dao = new UserDAO();
-        dao.insert(new User(name, phone, password, "USER"));
-        response.sendRedirect("/Login");
+        User user = new User();
+        user.setName(name);
+        user.setPhone(phone);
+        user.setPassWord(password);
+        user.setRole("USER");
+        boolean b = dao.insert(user);
+        if(b == false){
+            System.out.println("false");
+        }
+        response.sendRedirect("index.jsp");
     }
 
     /**

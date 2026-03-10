@@ -32,7 +32,11 @@ public class UserDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                user = new User(name, phone, password, role);
+                user = new User();
+                user.setName(name);
+                user.setPhone(phone);
+                user.setPassWord(password);
+                user.setRole(role);
             }
         } catch (Exception ex) {
             System.out.println("GetById:" + ex.getMessage());
@@ -64,7 +68,7 @@ public class UserDAO extends DBContext {
             System.out.println("insert:" + ex.getMessage());
         }
         return false;
-    }
+    }   
 
     public boolean checkLogin(String phone, String password) {
         try {
