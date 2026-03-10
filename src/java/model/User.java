@@ -9,14 +9,15 @@ package model;
  * @author -HP-
  */
 public class User {
-    private int id;
-    private String name;
-    private String phone;
-    private String passWord;
-    private String role;
+    public int id;
+    public String name;
+    public String phone;
+    public String passWord;
+    public String role;
 
     public User() {
     }
+
 
     public User(int id, String name, String phone, String passWord, String role) {
         this.id = id;

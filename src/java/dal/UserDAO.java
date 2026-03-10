@@ -14,13 +14,14 @@ import model.User;
  *
  * @author -HP-
  */
-public class UserDAO extends DBContext{
+public class UserDAO extends DBContext {
+
     PreparedStatement stm;
     ResultSet rs;
-    
-    public User GetById (int id){
+
+    public User GetById(int id) {
         User user = null;
-        try{
+        try {
             String strSQL = "select * from Users where id = ?";
             stm = connection.prepareCall(strSQL);
             stm.setInt(1, id);
@@ -31,50 +32,56 @@ public class UserDAO extends DBContext{
                 String phone = rs.getString("phone");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                user = new User(Id, name, phone, password, role);
+
+                user = new User(id, name, phone, password, role);
+
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("GetById:" + ex.getMessage());
         }
         return user;
     }
-    
-    public User insert(User user){
-        User found = GetById(user.getId());
-        if (found != null) return null;
-        
+
+    public boolean insert(User user) {
+
         try {
-            String strSQL = "insert into Users(name, phone, passWord, role) "
-                    + "values(?, ?, ?, ?)";
-            stm = connection.prepareCall(strSQL);
+            String strSQL = "INSERT INTO [dbo].[Users]\n"
+                    + "           ([name]\n"
+                    + "           ,[phone]\n"
+                    + "           ,[password]\n"
+                    + "           ,[role])\n"
+                    + "     VALUES\n"
+                    + "           (?\n"
+                    + "           ,?\n"
+                    + "           ,?\n"
+                    + "           ,?)";
+            stm = connection.prepareStatement(strSQL);
             stm.setString(1, user.getName());
             stm.setString(2, user.getPhone());
             stm.setString(3, user.getPassWord());
             stm.setString(4, user.getRole());
-            stm.execute();
-            if (rs.next()) {
-            user.setId(rs.getInt(1));
-            return user;
-        }
+            stm.executeUpdate();
+            return true;
         } catch (Exception ex) {
             System.out.println("insert:" + ex.getMessage());
         }
-        return null;
-    }
-    
-    public boolean checkLogin(String phone, String password){
-        try{
-            String strSQL = "select * from Users where phone = ? and passWord = ?";
+        return false;
+    }   
+
+    public User checkLogin(String username, String password) {
+        try {
+            String strSQL = "select * from Users where name = ? and password = ?";
             stm = connection.prepareCall(strSQL);
-            stm.setString(1, phone);
+            stm.setString(1, username);
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
-            if(rs.next()){
-                return true;
+            
+            if (rs.next()) {
+                return new User(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("passWord"), rs.getString("role"));
             }
-        }catch(Exception ex){
+        } catch (Exception ex) {
             System.out.println("checkLogin:" + ex.getMessage());
         }
-        return false;
+        return null;
     }
 }
