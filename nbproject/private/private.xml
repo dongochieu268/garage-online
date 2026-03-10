@@ -3,35 +3,23 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-<<<<<<< HEAD
-<<<<<<< HEAD
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/WEB-INF/ConnectDB.properties</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/UserDAO.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/testdao.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/ConnectDB.properties</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/auth/Login.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/styles.css</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/registerStyle.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/jss/newjavascript.js</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/User.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/index.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/serviceDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Booking.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/auth/register.jsp</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Service.java</file>
-=======
-=======
->>>>>>> 709b715f46105c47697a4655f6df029efc22fea2
-            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/testDAO.java</file>
-            <file>file:/D:/Assigment%20PRJ/garage-online/web/index.jsp</file>
-            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Booking.java</file>
-            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/BookingDAO.java</file>
-            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/DBContext.java</file>
-<<<<<<< HEAD
->>>>>>> 6b6b75e17ec0f879114b6ef285bf7f98ca7b8236
-=======
-=======
-            <file>file:/D:/PRJ%20project/garage-online/src/java/ConnectDB.properties</file>
-            <file>file:/D:/PRJ%20project/garage-online/src/java/model/Service.java</file>
-            <file>file:/D:/PRJ%20project/garage-online/src/java/dal/DBContext.java</file>
-            <file>file:/D:/PRJ%20project/garage-online/src/java/dal/serviceDAO.java</file>
-            <file>file:/D:/PRJ%20project/garage-online/src/java/dal/daotest.java</file>
-            <file>file:/D:/PRJ%20project/garage-online/web/WEB-INF/ConnectDB.properties</file>
->>>>>>> hieu3-3-2026
->>>>>>> 709b715f46105c47697a4655f6df029efc22fea2
         </group>
     </open-files>
 </project-private>

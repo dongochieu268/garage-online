@@ -9,9 +9,9 @@
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-        <title>JSP Page</title>
-        <link rel="stylesheet" href="/GarageOnline/static/css/styles.css" />
-        <script src="/GarageOnline/static/jss/newjavascript.js"></script>
+        <title>Garage Online - Login</title>
+        <link rel="stylesheet" href="static/css/styles.css" />
+        <!-- <script src="/GarageOnline/static/jss/newjavascript.js"></script> -->
     </head>
     <body>
         <div class="form">
@@ -30,11 +30,12 @@
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" required="required" value="${requestScope.password}"/>
                         </div>
-                        <div class="form-group">
+                        <!--<div class="form-group">
                             <label class="form-remember">
                                 <input type="checkbox"/>Remember Me
                             </label><a class="form-recovery" href="#">Forgot Password?</a>
-                        </div>
+                        </div>-->
+                        <div>${requestScope.error}</div>
                         <div class="form-group">
                             <button type="submit">Log In</button>
                         </div>

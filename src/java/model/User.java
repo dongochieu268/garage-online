@@ -9,7 +9,7 @@ package model;
  * @author -HP-
  */
 public class User {
-    public String id;
+    public int id;
     public String name;
     public String phone;
     public String passWord;
@@ -18,7 +18,8 @@ public class User {
     public User() {
     }
 
-    public User(String id, String name, String phone, String passWord, String role) {
+
+    public User(int id, String name, String phone, String passWord, String role) {
         this.id = id;
         this.name = name;
         this.phone = phone;
@@ -26,11 +27,11 @@ public class User {
         this.role = role;
     }
 
-    public String getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(int id) {
         this.id = id;
     }
 
