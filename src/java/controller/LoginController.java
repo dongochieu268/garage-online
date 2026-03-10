@@ -5,21 +5,22 @@
 package controller;
 
 import dal.UserDAO;
+import jakarta.servlet.RequestDispatcher;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import model.User;
 
 /**
  *
- * @author ADMIN
+ * @author -HP-
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
-public class RegisterServlet extends HttpServlet {
+
+public class LoginController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -30,6 +31,7 @@ public class RegisterServlet extends HttpServlet {
      * @throws ServletException if a servlet-specific error occurs
      * @throws IOException if an I/O error occurs
      */
+    
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
@@ -38,10 +40,10 @@ public class RegisterServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");
+            out.println("<title>Servlet LoginController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +61,7 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/views/auth/register.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/auth/Login.jsp").forward(request,response);
     }
 
     /**
@@ -73,29 +75,23 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
+        PrintWriter out = response.getWriter();
+        String username = request.getParameter("username");
         String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
 
-        if ( name == null || name.isEmpty() 
-                || password == null || password.isEmpty() 
-                || phone == null || phone.isEmpty()
-                || !phone.matches("^0[0-9]{9}$")) {
-            
-            request.setAttribute("error", "Enter again");
-            request.getRequestDispatcher("/views/auth/register.jsp").forward(request, response);
-            return;
-        }
+        // Kiem tra username va password
         UserDAO dao = new UserDAO();
-        User user = new User();
-        user.setName(name);
-        user.setPhone(phone);
-        user.setPassWord(password);
-        user.setRole("USER");
+        User user = dao.checkLogin(username, password);
 
-        dao.insert(user);
-        response.sendRedirect("Login");
-
+        if (user != null) {
+            HttpSession session = request.getSession();
+            session.setAttribute("user", user);
+            response.sendRedirect("index.jsp");
+        } else {
+            RequestDispatcher rd = request.getRequestDispatcher("views/auth/Login.jsp");
+            request.setAttribute("error", "Username and password are not valid.");
+            rd.forward(request, response);
+        }
     }
 
     /**

@@ -32,11 +32,9 @@ public class UserDAO extends DBContext {
                 String phone = rs.getString("phone");
                 String password = rs.getString("password");
                 String role = rs.getString("role");
-                user = new User();
-                user.setName(name);
-                user.setPhone(phone);
-                user.setPassWord(password);
-                user.setRole(role);
+
+                user = new User(id, name, phone, password, role);
+
             }
         } catch (Exception ex) {
             System.out.println("GetById:" + ex.getMessage());
@@ -57,7 +55,7 @@ public class UserDAO extends DBContext {
                     + "           ,?\n"
                     + "           ,?\n"
                     + "           ,?)";
-            stm = connection.prepareCall(strSQL);
+            stm = connection.prepareStatement(strSQL);
             stm.setString(1, user.getName());
             stm.setString(2, user.getPhone());
             stm.setString(3, user.getPassWord());
@@ -70,19 +68,20 @@ public class UserDAO extends DBContext {
         return false;
     }   
 
-    public boolean checkLogin(String phone, String password) {
+    public User checkLogin(String username, String password) {
         try {
-            String strSQL = "select * from Users where phone = ? and passWord = ?";
+            String strSQL = "select * from Users where name = ? and password = ?";
             stm = connection.prepareCall(strSQL);
-            stm.setString(1, phone);
+            stm.setString(1, username);
             stm.setString(2, password);
             ResultSet rs = stm.executeQuery();
+            
             if (rs.next()) {
-                return true;
+                return new User(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("passWord"), rs.getString("role"));
             }
         } catch (Exception ex) {
             System.out.println("checkLogin:" + ex.getMessage());
         }
-        return false;
+        return null;
     }
 }
