@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dal.UserDAO;
+import dal.serviceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,14 +12,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import model.User;
+import model.Service;
 
 /**
  *
  * @author ADMIN
  */
-@WebServlet(name = "RegisterServlet", urlPatterns = {"/register"})
-public class RegisterServlet extends HttpServlet {
+@WebServlet(name = "DeleteServiceController", urlPatterns = {"/deleteService"})
+public class DeleteServiceController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +38,10 @@ public class RegisterServlet extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet RegisterServlet</title>");
+            out.println("<title>Servlet DeleteServiceController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet RegisterServlet at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet DeleteServiceController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +59,17 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/views/auth/register.jsp").forward(request, response);
+        String id_raw = request.getParameter("id");
+        try {
+            int id = Integer.parseInt(id_raw);
+            serviceDAO dao = new serviceDAO();
+            Service s = dao.getById(id);
+            request.setAttribute("service", s);
+            request.getRequestDispatcher("/views/admin/service/delete.jsp").forward(request, response);
+        } catch (Exception e) {
+
+        }
+
     }
 
     /**
@@ -73,33 +83,15 @@ public class RegisterServlet extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        String name = request.getParameter("name");
-        String password = request.getParameter("password");
-        String phone = request.getParameter("phone");
-
-        if ( name == null || name.isEmpty() 
-                || password == null || password.isEmpty() 
-                || phone == null || phone.isEmpty()
-                || !phone.matches("^0[0-9]{9}$")) {
+        String id_raw  = request.getParameter("id");
+        try{
+            int id = Integer.parseInt(id_raw);
+            serviceDAO dao = new serviceDAO();
+            dao.delete(id);
+        }catch(Exception e){
             
-            request.setAttribute("error", "Enter again");
-            request.getRequestDispatcher("/views/auth/register.jsp").forward(request, response);
-            return;
         }
-        UserDAO dao = new UserDAO();
-        User user = new User();
-        user.setName(name);
-        user.setPhone(phone);
-        user.setPassWord(password);
-        user.setRole("USER");
-
-        boolean isRegister = dao.insert(user);
-        if(!isRegister){
-            request.setAttribute("error", "Can not register! Duplicate phonenumber!");
-            request.getRequestDispatcher("/views/auth/register.jsp").forward(request, response);
-        }
-        response.sendRedirect("Login");
-        
+        response.sendRedirect("service");
     }
 
     /**
