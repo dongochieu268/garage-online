@@ -73,18 +73,21 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        PrintWriter out = response.getWriter();
+
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
         // Kiem tra username va password
         UserDAO dao = new UserDAO();
         User user = dao.checkLogin(username, password);
-
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
-            response.sendRedirect("index.jsp");
+            if ("admin".equalsIgnoreCase(user.getRole())) {
+                response.sendRedirect("dashboard");
+            } else {
+                response.sendRedirect("index.jsp");
+            }
         } else {
             RequestDispatcher rd = request.getRequestDispatcher("views/auth/Login.jsp");
             request.setAttribute("error", "Username and password are not valid.");
