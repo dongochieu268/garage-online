@@ -93,9 +93,13 @@ public class RegisterServlet extends HttpServlet {
         user.setPassWord(password);
         user.setRole("USER");
 
-        dao.insert(user);
+        boolean isRegister = dao.insert(user);
+        if(!isRegister){
+            request.setAttribute("error", "Can not register! Duplicate phonenumber!");
+            request.getRequestDispatcher("/views/auth/register.jsp").forward(request, response);
+        }
         response.sendRedirect("Login");
-
+        
     }
 
     /**
