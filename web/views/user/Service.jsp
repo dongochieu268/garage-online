@@ -1,8 +1,11 @@
+
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@page contentType="text/html" pageEncoding="UTF-8"%>  
 <!doctype html>
 <html class="no-js" lang="zxx">
 
     <head>
-        <meta charset="utf-8">
+        <meta charset="UTF-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>Montana</title>
         <meta name="description" content="">
@@ -13,17 +16,17 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- CSS here -->
-        <link rel="stylesheet" href="static/css/bootstrap.min.css">
-        <link rel="stylesheet" href="static/css/owl.carousel.min.css">
-        <link rel="stylesheet" href="static/css/magnific-popup.css">
-        <link rel="stylesheet" href="static/css/font-awesome.min.css">
-        <link rel="stylesheet" href="static/css/themify-icons.css">
-        <link rel="stylesheet" href="static/css/nice-select.css">
-        <link rel="stylesheet" href="static/css/flaticon.css">
-        <link rel="stylesheet" href="static/css/gijgo.css">
-        <link rel="stylesheet" href="static/css/animate.css">
-        <link rel="stylesheet" href="static/css/slicknav.css">
-        <link rel="stylesheet" href="static/css/style.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/owl.carousel.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/magnific-popup.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/font-awesome.min.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/themify-icons.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/nice-select.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/flaticon.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/gijgo.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/animate.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/slicknav.css">
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/style.css">
         <!-- <link rel="stylesheet" href="css/responsive.css"> -->
     </head>
 
@@ -42,8 +45,8 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="rooms.html">rooms</a></li>
+                                            <li><a href="/Home">home</a></li>
+                                            <li><a class="active" href="Service">service</a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">
@@ -64,7 +67,7 @@
                             <div class="col-xl-2 col-lg-2">
                                 <div class="logo-img">
                                     <a href="index.html">
-                                        <img src="img/logo.png" alt="">
+                                        <img src="${pageContext.request.contextPath}/static/img/logo.png" alt="">
                                     </a>
                                 </div>
                             </div>
@@ -92,18 +95,6 @@
                                     <div class="book_btn d-none d-lg-block">
                                         <a class="popup-with-form" href="#test-form">Book A Room</a>
                                     </div>
-
-                                    <% if(session.getAttribute("user")==null){%>
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a  href="Login">Login</a>
-
-                                    </div>
-                                    <%}else{ %>
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a  href="LogOutController">LogOut</a>
-
-                                    </div>
-                                    <% } %>
                                 </div>
                             </div>
                             <div class="col-12">
@@ -116,95 +107,14 @@
         </header>
         <!-- header-end -->
 
-        <!-- slider_area_start -->
-        <div class="slider_area">
-            <div class="slider_active owl-carousel">
-                <div class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="slider_text text-center">
-                                    <h3>Montana Resort</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_slider  d-flex align-items-center justify-content-center slider_bg_2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="slider_text text-center">
-                                    <h3>Life is Beautiful</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="slider_text text-center">
-                                    <h3>Montana Resort</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_slider  d-flex align-items-center justify-content-center slider_bg_2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="slider_text text-center">
-                                    <h3>Life is Beautiful</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <!-- bradcam_area_start -->
+        <div class="bradcam_area breadcam_bg_1">
+            <h3>Laxaries Rooms</h3>
         </div>
-        <!-- slider_area_end -->
-
-        <!-- about_area_start -->
-        <div class="about_area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-5 col-lg-5">
-                        <div class="about_info">
-                            <div class="section_title mb-20px">
-                                <span>About Us</span>
-                                <h3>A Luxuries Hotel <br>
-                                    with Nature</h3>
-                            </div>
-                            <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare
-                                dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-                                sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
-                            <a href="#" class="line-button">Learn More</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="about_thumb d-flex">
-                            <div class="img_1">
-                                <img src="img/about/about_1.png" alt="">
-                            </div>
-                            <div class="img_2">
-                                <img src="img/about/about_2.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- about_area_end -->
+        <!-- bradcam_area_end -->
 
         <!-- offers_area_start -->
-        <div class="offers_area">
+        <div class="offers_area padding_top">
             <div class="container">
                 <div class="row">
                     <div class="col-xl-12">
@@ -215,12 +125,29 @@
                     </div>
                 </div>
                 <div class="row">
+                    <c:forEach var="s" items="${services}">
+                        <div class="col-xl-4 col-md-4">
+                            <div class="single_offers">
+                                <div class="about_thumb">
+                                    <img src="${pageContext.request.contextPath}/static/img/offers/1.png" alt="">
+                                </div>
+                                <h3>Up to 35% savings on Club <br> 
+                                    rooms and Suites</h3>
+                                <ul>
+                                    <li>${s.name}</li>
+                                    <li>Price: ${s.price}</li>
+                                    <li>${s.description}</li>
+                                </ul>
+                                <a href="#" class="book_now">book now</a>
+                            </div>
+                        </div>
+                    </c:forEach>
                     <div class="col-xl-4 col-md-4">
                         <div class="single_offers">
                             <div class="about_thumb">
-                                <img src="img/offers/1.png" alt="">
+                                <img src="${pageContext.request.contextPath}/static/img/offers/1.png" alt="">
                             </div>
-                            <h3>Up to 35% savings on Club <br>
+                            <h3>Up to 35% savings on Club <br> 
                                 rooms and Suites</h3>
                             <ul>
                                 <li>Luxaries condition</li>
@@ -233,9 +160,9 @@
                     <div class="col-xl-4 col-md-4">
                         <div class="single_offers">
                             <div class="about_thumb">
-                                <img src="img/offers/2.png" alt="">
+                                <img src="${pageContext.request.contextPath}/static/img/offers/2.png" alt="">
                             </div>
-                            <h3>Up to 35% savings on Club <br>
+                            <h3>Up to 35% savings on Club <br> 
                                 rooms and Suites</h3>
                             <ul>
                                 <li>Luxaries condition</li>
@@ -248,9 +175,9 @@
                     <div class="col-xl-4 col-md-4">
                         <div class="single_offers">
                             <div class="about_thumb">
-                                <img src="img/offers/3.png" alt="">
+                                <img src="${pageContext.request.contextPath}/static/img/offers/3.png" alt="">
                             </div>
-                            <h3>Up to 35% savings on Club <br>
+                            <h3>Up to 35% savings on Club <br> 
                                 rooms and Suites</h3>
                             <ul>
                                 <li>Luxaries condition</li>
@@ -264,51 +191,6 @@
             </div>
         </div>
         <!-- offers_area_end -->
-
-        <!-- video_area_start -->
-        <div class="video_area video_bg overlay">
-            <div class="video_area_inner text-center">
-                <span>Montana Sea View</span>
-                <h3>Relax and Enjoy your <br>
-                    Vacation </h3>
-                <a href="https://www.youtube.com/watch?v=vLnPwxZdW4Y" class="video_btn popup-video">
-                    <i class="fa fa-play"></i>
-                </a>
-            </div>
-        </div>
-        <!-- video_area_end -->
-
-        <!-- about_area_start -->
-        <div class="about_area">
-            <div class="container">
-                <div class="row">
-                    <div class="col-xl-7 col-lg-7">
-                        <div class="about_thumb2 d-flex">
-                            <div class="img_1">
-                                <img src="img/about/1.png" alt="">
-                            </div>
-                            <div class="img_2">
-                                <img src="img/about/2.png" alt="">
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-xl-5 col-lg-5">
-                        <div class="about_info">
-                            <div class="section_title mb-20px">
-                                <span>Delicious Food</span>
-                                <h3>We Serve Fresh and <br>
-                                    Delicious Food</h3>
-                            </div>
-                            <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare
-                                dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-                                sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
-                            <a href="#" class="line-button">Learn More</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- about_area_end -->
 
         <!-- features_room_startt -->
         <div class="features_room">
@@ -325,7 +207,7 @@
             <div class="rooms_here">
                 <div class="single_rooms">
                     <div class="room_thumb">
-                        <img src="img/rooms/1.png" alt="">
+                        <img src="${pageContext.request.contextPath}/static/img/rooms/1.png" alt="">
                         <div class="room_heading d-flex justify-content-between align-items-center">
                             <div class="room_heading_inner">
                                 <span>From $250/night</span>
@@ -337,7 +219,7 @@
                 </div>
                 <div class="single_rooms">
                     <div class="room_thumb">
-                        <img src="img/rooms/2.png" alt="">
+                        <img src="${pageContext.request.contextPath}/static/img/rooms/2.png" alt="">
                         <div class="room_heading d-flex justify-content-between align-items-center">
                             <div class="room_heading_inner">
                                 <span>From $250/night</span>
@@ -349,7 +231,7 @@
                 </div>
                 <div class="single_rooms">
                     <div class="room_thumb">
-                        <img src="img/rooms/3.png" alt="">
+                        <img src="${pageContext.request.contextPath}/static/img/rooms/3.png" alt="">
                         <div class="room_heading d-flex justify-content-between align-items-center">
                             <div class="room_heading_inner">
                                 <span>From $250/night</span>
@@ -361,7 +243,7 @@
                 </div>
                 <div class="single_rooms">
                     <div class="room_thumb">
-                        <img src="img/rooms/4.png" alt="">
+                        <img src="${pageContext.request.contextPath}/static/img/rooms/4.png" alt="">
                         <div class="room_heading d-flex justify-content-between align-items-center">
                             <div class="room_heading_inner">
                                 <span>From $250/night</span>
@@ -403,7 +285,7 @@
         <!-- instragram_area_start -->
         <div class="instragram_area">
             <div class="single_instagram">
-                <img src="img/instragram/1.png" alt="">
+                <img src="${pageContext.request.contextPath}/static/img/instragram/1.png" alt="">
                 <div class="ovrelay">
                     <a href="#">
                         <i class="fa fa-instagram"></i>
@@ -411,7 +293,7 @@
                 </div>
             </div>
             <div class="single_instagram">
-                <img src="img/instragram/2.png" alt="">
+                <img src="${pageContext.request.contextPath}/static/img/instragram/2.png" alt="">
                 <div class="ovrelay">
                     <a href="#">
                         <i class="fa fa-instagram"></i>
@@ -419,7 +301,7 @@
                 </div>
             </div>
             <div class="single_instagram">
-                <img src="img/instragram/3.png" alt="">
+                <img src="${pageContext.request.contextPath}/static/img/instragram/3.png" alt="">
                 <div class="ovrelay">
                     <a href="#">
                         <i class="fa fa-instagram"></i>
@@ -427,7 +309,7 @@
                 </div>
             </div>
             <div class="single_instagram">
-                <img src="img/instragram/4.png" alt="">
+                <img src="${pageContext.request.contextPath}/static/img/instragram/4.png" alt="">
                 <div class="ovrelay">
                     <a href="#">
                         <i class="fa fa-instagram"></i>
@@ -435,7 +317,7 @@
                 </div>
             </div>
             <div class="single_instagram">
-                <img src="img/instragram/5.png" alt="">
+                <img src="${pageContext.request.contextPath}/static/img/instragram/5.png" alt="">
                 <div class="ovrelay">
                     <a href="#">
                         <i class="fa fa-instagram"></i>
@@ -446,7 +328,7 @@
         <!-- instragram_area_end -->
 
         <!-- footer -->
-        <footer class="footer">
+        <footer class="footer" >
             <div class="footer_top">
                 <div class="container">
                     <div class="row">
@@ -455,7 +337,7 @@
                                 <h3 class="footer_title">
                                     address
                                 </h3>
-                                <p class="footer_text"> 200, Green road, Mongla, <br>
+                                <p class="footer_text" >  200, Green road, Mongla, <br>
                                     New Yor City USA</p>
                                 <a href="#" class="line-button">Get Direction</a>
                             </div>
@@ -465,7 +347,7 @@
                                 <h3 class="footer_title">
                                     Reservation
                                 </h3>
-                                <p class="footer_text">+10 367 267 2678 <br>
+                                <p class="footer_text" >+10 367 267 2678 <br>
                                     reservation@montana.com</p>
                             </div>
                         </div>
@@ -489,7 +371,7 @@
                                 </h3>
                                 <form action="#" class="newsletter_form">
                                     <input type="text" placeholder="Enter your mail">
-                                    <button type="submit">Sign Up</button>
+                                    <button type="submit" >Sign Up</button>
                                 </form>
                                 <p class="newsletter_text">Subscribe newsletter to get updates</p>
                             </div>
@@ -506,6 +388,7 @@
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                                 Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
                                 <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
+                            </p>
                         </div>
                         <div class="col-xl-4 col-md-5 col-lg-3">
                             <div class="socail_links">
@@ -532,8 +415,6 @@
                 </div>
             </div>
         </footer>
-
-        <!-- link that opens popup -->
 
         <!-- form itself end-->
         <form id="test-form" class="white-popup-block mfp-hide">
@@ -583,48 +464,49 @@
         </form>
         <!-- form itself end -->
 
+
         <!-- JS here -->
-        <script src="static/js/vendor/modernizr-3.5.0.min.js"></script>
-        <script src="static/js/vendor/jquery-1.12.4.min.js"></script>
-        <script src="static/js/popper.min.js"></script>
-        <script src="static/js/bootstrap.min.js"></script>
-        <script src="static/js/owl.carousel.min.js"></script>
-        <script src="static/js/isotope.pkgd.min.js"></script>
-        <script src="static/js/ajax-form.js"></script>
-        <script src="static/js/waypoints.min.js"></script>
-        <script src="static/js/jquery.counterup.min.js"></script>
-        <script src="static/js/imagesloaded.pkgd.min.js"></script>
-        <script src="static/js/scrollIt.js"></script>
-        <script src="static/js/jquery.scrollUp.min.js"></script>
-        <script src="static/js/wow.min.js"></script>
-        <script src="static/js/nice-select.min.js"></script>
-        <script src="static/js/jquery.slicknav.min.js"></script>
-        <script src="static/js/jquery.magnific-popup.min.js"></script>
-        <script src="static/js/plugins.js"></script>
-        <script src="static/js/gijgo.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/popper.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/bootstrap.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/owl.carousel.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/isotope.pkgd.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/ajax-form.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/waypoints.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.counterup.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/imagesloaded.pkgd.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/scrollIt.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.scrollUp.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/wow.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/nice-select.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.slicknav.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.magnific-popup.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/plugins.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/gijgo.min.js"></script>
 
         <!--contact js-->
-        <script src="static/js/contact.js"></script>
-        <script src="static/js/jquery.ajaxchimp.min.js"></script>
-        <script src="static/js/jquery.form.js"></script>
-        <script src="static/js/jquery.validate.min.js"></script>
-        <script src="static/js/mail-script.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/contact.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.ajaxchimp.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.form.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/jquery.validate.min.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/mail-script.js"></script>
 
-        <script src="static/js/main.js"></script>
+        <script src="${pageContext.request.contextPath}/static/js/main.js"></script>
         <script>
-                                    $('#datepicker').datepicker({
-                                        iconsLibrary: 'fontawesome',
-                                        icons: {
-                                            rightIcon: '<span class="fa fa-caret-down"></span>'
-                                        }
-                                    });
-                                    $('#datepicker2').datepicker({
-                                        iconsLibrary: 'fontawesome',
-                                        icons: {
-                                            rightIcon: '<span class="fa fa-caret-down"></span>'
-                                        }
+        $('#datepicker').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
+        });
+        $('#datepicker2').datepicker({
+            iconsLibrary: 'fontawesome',
+            icons: {
+                rightIcon: '<span class="fa fa-caret-down"></span>'
+            }
 
-                                    });
+        });
         </script>
 
 

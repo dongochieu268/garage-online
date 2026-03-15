@@ -42,8 +42,8 @@
                                 <div class="main-menu  d-none d-lg-block">
                                     <nav>
                                         <ul id="navigation">
-                                            <li><a class="active" href="index.html">home</a></li>
-                                            <li><a href="rooms.html">rooms</a></li>
+                                            <li><a class="active" href="index.jsp">home</a></li>
+                                            <li><a href="Service">service</a></li>
                                             <li><a href="about.html">About</a></li>
                                             <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                                 <ul class="submenu">

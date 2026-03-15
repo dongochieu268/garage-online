@@ -139,6 +139,26 @@ body {
   line-height: inherit;
   text-transform: uppercase;
   cursor: pointer;
+  text-align: center;
+}
+.btn-register {
+  outline: none;
+  background: white;
+  width: 100%;
+  border: 2px solid #4285F4;
+  border-radius: 4px;
+  padding: 12px 20px;
+  color: #4285F4;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.btn-register:hover {
+  background: #4285F4;
+  color: white;
 }
 .two .form-group button {
   background: #FFFFFF;

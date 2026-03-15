@@ -4,6 +4,7 @@
  */
 package controller;
 
+
 import dal.serviceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -17,11 +18,9 @@ import model.Service;
 
 /**
  *
- * @author -HP-
+ * @author Admin
  */
-@WebServlet(name = "ServiceController", urlPatterns = {"/Service"})
-
-public class ServiceController extends HttpServlet {
+public class ServiceAdminController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +39,10 @@ public class ServiceController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");
+            out.println("<title>Servlet ServiceAdminController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet ServiceAdminController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,14 +60,12 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
+//        processRequest(request, response);
         serviceDAO dao = new serviceDAO();
-
         List<Service> services = dao.getAll();
-        for (Service s : services) {
-            System.out.println(s);
-        }
         request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
+        request.getRequestDispatcher("/views/admin/service/service.jsp").forward(request, response);
+
     }
 
     /**
