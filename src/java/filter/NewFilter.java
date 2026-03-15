@@ -109,9 +109,10 @@ public class NewFilter implements Filter {
 
 // trang public
         if (uri.contains("index.jsp") || uri.contains("Login") ||
-                uri.contains("/css/")||
-                uri.contains("/js/")||
-                uri.contains("/images/"))
+                uri.contains("/static/css/")||
+                uri.contains("/static/js/")||
+                uri.contains("/static/img/")||
+                uri.contains("/static/jss/"))
         {
             chain.doFilter(request, response);
             return;
@@ -121,7 +122,7 @@ public class NewFilter implements Filter {
         if (session != null && session.getAttribute("user") != null) {
             User user = (User) session.getAttribute("user");
             // ko cho user vao trang admin
-            if (!"admin".equalsIgnoreCase(user.getRole()) && uri.contains("dashboard")) {
+            if (!"admin".equalsIgnoreCase(user.getRole()) && uri.contains("/admin")) {
                 res.sendRedirect(req.getContextPath() + "/index.jsp");
                 return;
             }

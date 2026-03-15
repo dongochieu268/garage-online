@@ -19,7 +19,7 @@ import model.Service;
  *
  * @author ADMIN
  */
-@WebServlet(name="CreateServiceController", urlPatterns={"/createService"})
+@WebServlet(name="CreateServiceController", urlPatterns={"/admin/createService"})
 public class CreateServiceController extends HttpServlet {
    
     /** 
