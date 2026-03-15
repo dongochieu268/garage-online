@@ -19,7 +19,7 @@
 
             <!-- Nút Create bên phải -->
             <div class="d-flex justify-content-end mb-3">
-                <a class="btn btn-success" href="createService">Create</a>
+                <a class="btn btn-success" href="/admin/createService">Create</a>
             </div>
 
             <!-- Bảng căn giữa -->
@@ -43,8 +43,8 @@
                                 <td>${service.price}</td>
                                 <td>${service.description}</td>
                                 <td>
-                                    <a class="btn btn-warning btn-sm" href="updateService?id=${service.id}">Update</a>
-                                    <a class="btn btn-danger btn-sm" href="deleteService?id=${service.id}">Delete</a>
+                                    <a class="btn btn-warning btn-sm" href="/admin/updateService?id=${service.id}">Update</a>
+                                    <a class="btn btn-danger btn-sm" href="/admin/deleteService?id=${service.id}">Delete</a>
                                 </td>
                             </tr>
                         </c:forEach>

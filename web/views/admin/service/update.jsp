@@ -16,7 +16,7 @@
         <%@include file="/views/admin/layouts/navbar.jsp" %>
         <div class="container mt-5 d-flex justify-content-center">
 
-            <form style="width:95%; max-width:700px;" action="updateService" method="post">
+            <form style="width:95%; max-width:700px;" action="/admin/updateService" method="post">
                 <input type="hidden" class="form-control" id="name" name="id"  value="${service.id}">
                 <div class="form-group mb-3">
                     <label for="name">Name</label>

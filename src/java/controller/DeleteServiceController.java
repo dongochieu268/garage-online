@@ -18,7 +18,7 @@ import model.Service;
  *
  * @author ADMIN
  */
-@WebServlet(name = "DeleteServiceController", urlPatterns = {"/deleteService"})
+@WebServlet(name = "DeleteServiceController", urlPatterns = {"/admin/deleteService"})
 public class DeleteServiceController extends HttpServlet {
 
     /**

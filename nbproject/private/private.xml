@@ -11,12 +11,19 @@
             <file>file:/D:/PRJ%20project/garage-online/src/java/dal/DBContext.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/dal/serviceDAO.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/dal/UserDAO.java</file>
+            <file>file:/D:/PRJ%20project/garage-online/web/views/auth/Login.jsp</file>
+            <file>file:/D:/PRJ%20project/garage-online/web/static/css/style.css</file>
+            <file>file:/D:/PRJ%20project/garage-online/web/WEB-INF/ConnectDB.properties</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/controller/DeleteServiceController.java</file>
+            <file>file:/D:/PRJ%20project/garage-online/web/WEB-INF/web.xml</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/controller/DashBoardController.java</file>
             <file>file:/D:/PRJ%20project/garage-online/web/views/auth/register.jsp</file>
+            <file>file:/D:/PRJ%20project/garage-online/src/java/controller/RegisterServlet.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/controller/UdateServiceController.java</file>
             <file>file:/D:/PRJ%20project/garage-online/web/views/admin/service/service.jsp</file>
+            <file>file:/D:/PRJ%20project/garage-online/web/static/css/styles.css</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/dal/BookingDAO.java</file>
+            <file>file:/D:/PRJ%20project/garage-online/src/java/filter/NewFilter.java</file>
             <file>file:/D:/PRJ%20project/garage-online/web/views/admin/service/create.jsp</file>
             <file>file:/D:/PRJ%20project/garage-online/web/index.jsp</file>
             <file>file:/D:/PRJ%20project/garage-online/web/views/admin/service/delete.jsp</file>

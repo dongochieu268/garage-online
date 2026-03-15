@@ -16,7 +16,7 @@
         <%@include file="/views/admin/layouts/navbar.jsp" %>
         <div class="container mt-5 d-flex justify-content-center">
 
-            <form style="width:95%; max-width:700px;" action="createService" method="post">
+            <form style="width:95%; max-width:700px;" action="/admin/createService" method="post">
 
                 <div class="form-group mb-3">
                     <label for="name">Name</label>

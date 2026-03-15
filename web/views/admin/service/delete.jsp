@@ -20,7 +20,7 @@
                 <h4 class="alert-heading">Cảnh báo!</h4>
                 <p>Bạn có chắc muốn xóa service "${service.name}" không?</p>
                 <hr>
-                <form action="deleteService" method="post">
+                <form action="/admin/deleteService" method="post">
                     <input type="hidden" name="id" value="${service.id}">
                     <input class="btn btn-danger btn-sm" type="submit" value="Delete">
                 </form>
