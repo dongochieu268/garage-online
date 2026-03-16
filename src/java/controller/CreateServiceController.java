@@ -13,19 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 import model.Service;
 
 /**
  *
-<<<<<<< HEAD
- * @author -HP-
+ * @author ADMIN
  */
-
-@WebServlet(name="ServiceController", urlPatterns={"/Service"})
-
-
-public class ServiceController extends HttpServlet {
+@WebServlet(name="CreateServiceController", urlPatterns={"/admin/createService"})
+public class CreateServiceController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,17 +30,17 @@ public class ServiceController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    throws ServletException, IOException {              
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");  
+            out.println("<title>Servlet CreateServiceController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet CreateServiceController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,15 +57,7 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        serviceDAO dao = new serviceDAO();
-        List<Service> services = dao.getAll();
-        for(Service s : services){
-            System.out.println(s);
-        }
-        request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
-        
-
+        request.getRequestDispatcher("/views/admin/service/create.jsp").forward(request, response);
     } 
 
     /** 
@@ -83,7 +70,30 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String name = request.getParameter("name");
+        String price_raw = request.getParameter("price");
+        String description = request.getParameter("description");
+        try{
+            double price = Double.parseDouble(price_raw);
+            Service s = new Service();
+            s.setName(name);
+            s.setPrice(price);
+            s.setDescription(description);
+            serviceDAO dao = new serviceDAO();
+            boolean b = dao.insert(s);
+            if(b == true){
+                response.sendRedirect("service");
+            }
+            else{
+                request.setAttribute("error", "Can not create");
+                request.getRequestDispatcher("/views/admin/service/create.jsp").forward(request, response);
+            }
+            
+        }catch(Exception e){
+            request.setAttribute("error", "Can not create 2");
+            request.getRequestDispatcher("/views/admin/service/create.jsp").forward(request, response);
+        }
+        
     }
 
     /** 

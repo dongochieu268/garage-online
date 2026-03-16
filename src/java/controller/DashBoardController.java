@@ -5,7 +5,6 @@
 
 package controller;
 
-import dal.serviceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,19 +12,13 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Service;
 
 /**
  *
-<<<<<<< HEAD
- * @author -HP-
+ * @author ADMIN
  */
-
-@WebServlet(name="ServiceController", urlPatterns={"/Service"})
-
-
-public class ServiceController extends HttpServlet {
+@WebServlet(name="DashBoardController", urlPatterns={"/admin/dashboard"})
+public class DashBoardController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,17 +28,17 @@ public class ServiceController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    throws ServletException, IOException {              
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");  
+            out.println("<title>Servlet DashBoardController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet DashBoardController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,15 +55,7 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        serviceDAO dao = new serviceDAO();
-        List<Service> services = dao.getAll();
-        for(Service s : services){
-            System.out.println(s);
-        }
-        request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
-        
-
+        request.getRequestDispatcher("/views/admin/dashboard.jsp").forward(request, response);
     } 
 
     /** 

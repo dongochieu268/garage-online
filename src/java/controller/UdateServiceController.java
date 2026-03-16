@@ -13,19 +13,14 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 import model.Service;
 
 /**
  *
-<<<<<<< HEAD
- * @author -HP-
+ * @author ADMIN
  */
-
-@WebServlet(name="ServiceController", urlPatterns={"/Service"})
-
-
-public class ServiceController extends HttpServlet {
+@WebServlet(name="updateServiceController", urlPatterns={"/admin/updateService"})
+public class UdateServiceController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -35,17 +30,17 @@ public class ServiceController extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
+    throws ServletException, IOException {              
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");  
+            out.println("<title>Servlet updateServiceController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet updateServiceController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -62,15 +57,17 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        serviceDAO dao = new serviceDAO();
-        List<Service> services = dao.getAll();
-        for(Service s : services){
-            System.out.println(s);
+        String id_raw = request.getParameter("id");
+        try{
+            int id = Integer.parseInt(id_raw);
+            serviceDAO dao = new serviceDAO();
+            Service s = dao.getById(id);
+            request.setAttribute("service", s);
+            request.getRequestDispatcher("/views/admin/service/update.jsp").forward(request, response);
+        }catch(Exception e){
+            
         }
-        request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
-        
-
+        request.getRequestDispatcher("/views/admin/service/update.jsp").forward(request, response);
     } 
 
     /** 
@@ -83,7 +80,21 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
-        processRequest(request, response);
+        String id_raw = request.getParameter("id");
+        String name = request.getParameter("name");
+        String price_raw = request.getParameter("price");
+        String description = request.getParameter("description");
+        try{
+            int id = Integer.parseInt(id_raw);
+            double price = Double.parseDouble(price_raw);
+            Service s = new Service(id, name, price, description);
+            serviceDAO dao = new serviceDAO();
+            dao.update(s);
+            
+        }catch(Exception e){
+            
+        }
+        response.sendRedirect("service");
     }
 
     /** 

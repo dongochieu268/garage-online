@@ -18,14 +18,10 @@ import model.Service;
 
 /**
  *
-<<<<<<< HEAD
  * @author -HP-
  */
-
-@WebServlet(name="ServiceController", urlPatterns={"/Service"})
-
-
-public class ServiceController extends HttpServlet {
+@WebServlet(name="ServiceAdminController", urlPatterns={"/admin/service"})
+public class ServiceAdminController extends HttpServlet {
    
     /** 
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
@@ -42,10 +38,10 @@ public class ServiceController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");  
+            out.println("<title>Servlet ServiceAdminController</title>");  
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath () + "</h1>");
+            out.println("<h1>Servlet ServiceAdminController at " + request.getContextPath () + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -68,9 +64,8 @@ public class ServiceController extends HttpServlet {
             System.out.println(s);
         }
         request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
-        
-
+        request.setAttribute("services", services);
+        request.getRequestDispatcher("/views/admin/service/service.jsp").forward(request, response);
     } 
 
     /** 

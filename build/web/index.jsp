@@ -95,12 +95,12 @@
 
                                     <% if(session.getAttribute("user")==null){%>
                                     <div class="book_btn d-none d-lg-block">
-                                        <a class="popup-with-form" href="Login">Login</a>
+                                        <a  href="Login">Login</a>
 
                                     </div>
                                     <%}else{ %>
                                     <div class="book_btn d-none d-lg-block">
-                                        <a class="popup-with-form" href="LogOutController">LogOut</a>
+                                        <a  href="LogOutController">LogOut</a>
 
                                     </div>
                                     <% } %>
