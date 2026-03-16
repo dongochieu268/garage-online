@@ -40,6 +40,12 @@
                             <button type="submit">Log In</button>
                         </div>
                     </form>
+                    <br>
+                    <form action="register" method="post">
+                        <div class="form-group">
+                            <button type="submit">Register</button>
+                        </div>
+                    </form>
                 </div>
             </div>
         </div>
