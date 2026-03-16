@@ -142,6 +142,7 @@
                             </div>
                         </div>
                     </c:forEach>
+                    <br>
                     <div class="col-xl-4 col-md-4">
                         <div class="single_offers">
                             <div class="about_thumb">

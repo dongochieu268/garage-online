@@ -60,12 +60,10 @@ public class ServiceController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         serviceDAO dao = new serviceDAO();
-
         List<Service> services = dao.getAll();
         for(Service s : services){
             System.out.println(s);
         }
-
         request.setAttribute("services", services);
 
         request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
