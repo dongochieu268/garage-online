@@ -4,27 +4,47 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/WEB-INF/ConnectDB.properties</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/auth/Login.jsp</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/styles.css</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/LogOutController.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/js/waypoints.min.js</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/DBContext.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/registerStyle.css</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/jss/newjavascript.js</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/theme-default.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/DeleteServiceController.java</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/User.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/user/Service.jsp</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/owl.carousel.min.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/animate.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/CreateServiceController.java</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/ServiceController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/bootstrap.min.css</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/index.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/gijgo.css</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/LoginController.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/magnific-popup.css</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/WEB-INF/web.xml</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/serviceDAO.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/admin/layouts/navbar.jsp</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Booking.java</file>
-            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/auth/register.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/font-awesome.min.css</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/BookingDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/UdateServiceController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.map</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/DashBoardController.java</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Service.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/auth/Login.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/js/waypoints.min.js</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/ServiceAdminController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/themify-icons.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/nice-select.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/registerStyle.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/jss/newjavascript.js</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/theme-default.map</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/flaticon.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/user/Service.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/META-INF/context.xml</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/auth/register.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/slicknav.css</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.css</file>
         </group>
     </open-files>
 </project-private>
