@@ -4,13 +4,12 @@
  */
 package dal;
 
+
 import java.math.BigDecimal;
 import java.util.List;
 import model.Booking;
 import java.sql.*;
 import java.time.LocalDateTime;
-
-
 import java.util.ArrayList;
 import model.BookingInfo;
 
@@ -21,46 +20,48 @@ import model.BookingInfo;
 public class BookingDAO extends DBContext {
 
     //user dat lich
-    void insert(Booking b) {
+    public void insert(Booking b) {
         String sql = "INSERT INTO bookings "
-                + "( service_id, vehicle_type, problem_description, booking_date, status, total_price) "
-                + "VALUES ( ?, ?, ?, ?, ?, ?)";
+                + "(user_id, service_id, vehicle_type, problem_description, booking_date, status, total_price) "
+                + "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-
-            ps.setInt(1, b.getServiceId());
-            ps.setString(2, b.getVehicleType());
-            ps.setString(3, b.getProblemDescription());
-            ps.setTimestamp(4, Timestamp.valueOf(b.getBookingDate()));
-            ps.setString(5, b.getStatus());
-            ps.setBigDecimal(6, b.getTotalPrice());
-
+            ps.setInt(1, b.getUserId());
+            ps.setInt(2, b.getServiceId());
+            ps.setString(3, b.getVehicleType());
+            ps.setString(4, b.getProblemDescription());
+            if (b.getBookingDate() != null) {
+                ps.setTimestamp(5, Timestamp.valueOf(b.getBookingDate()));
+            } else {
+                ps.setTimestamp(5, new Timestamp(System.currentTimeMillis()));
+            }
+            ps.setString(6, b.getStatus() != null ? b.getStatus() : "Pending");
+            ps.setBigDecimal(7, b.getTotalPrice() != null
+                    ? b.getTotalPrice()
+                    : new java.math.BigDecimal(0));
             ps.executeUpdate();
-
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
     //user xem lich su theo user_id
-    List<Booking> getByUserId(int UserId) {
+    public List<Booking> getByUserId(int userId) {
         List<Booking> list = new ArrayList<>();
-        String sql = "SELECT * FROM users WHERE id = ?";
+        String sql = "SELECT * FROM bookings WHERE user_id = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-
-            ps.setInt(1, UserId);
+            ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
                 Booking b = new Booking(
                         rs.getInt("id"),
-                        rs.getInt("userId"),
-                        rs.getInt("serviceId"),
-                        rs.getString("vehicleType"),
-                        rs.getString("problemDescription"),
-                        rs.getTimestamp("bookingDate").toLocalDateTime(),
+                        rs.getInt("user_id"),
+                        rs.getInt("service_id"),
+                        rs.getString("vehicle_type"),
+                        rs.getString("problem_description"),
+                        rs.getTimestamp("booking_date").toLocalDateTime(),
                         rs.getString("status"),
-                        rs.getBigDecimal("totalPrice")
+                        rs.getBigDecimal("total_price")
                 );
                 list.add(b);
             }
@@ -74,8 +75,7 @@ public class BookingDAO extends DBContext {
     }
 
     // Admin xem all
-    List<Booking> getAll() {
-
+    public List<Booking> getAll() {
         List<Booking> list = new ArrayList<>();
         String sql = "SELECT * FROM bookings";
 
@@ -84,13 +84,13 @@ public class BookingDAO extends DBContext {
             while (rs.next()) {
                 Booking b = new Booking(
                         rs.getInt("id"),
-                        rs.getInt("userId"),
-                        rs.getInt("serviceId"),
-                        rs.getString("vehicleType"),
-                        rs.getString("problemDescription"),
-                        rs.getTimestamp("bookingDate").toLocalDateTime(),
+                        rs.getInt("user_id"),
+                        rs.getInt("service_id"),
+                        rs.getString("vehicle_type"),
+                        rs.getString("problem_description"),
+                        rs.getTimestamp("booking_date").toLocalDateTime(),
                         rs.getString("status"),
-                        rs.getBigDecimal("totalPrice")
+                        rs.getBigDecimal("total_price")
                 );
                 list.add(b);
             }
@@ -103,7 +103,8 @@ public class BookingDAO extends DBContext {
     }
 
     //update Status
-    void updateStatus(int id, String status) {
+    public void updateStatus(int id, String status) {
+
         String sql = "UPDATE bookings SET status = ? WHERE id = ?";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -116,7 +117,6 @@ public class BookingDAO extends DBContext {
             e.printStackTrace();
         }
     }
-
     public List<BookingInfo> getAllBookingInfo() {
         String sql = "SELECT b.[id]\n"
                 + "      ,u.[name] as [userName]\n"
@@ -151,5 +151,4 @@ public class BookingDAO extends DBContext {
         }
         return list;
     }
-
 }

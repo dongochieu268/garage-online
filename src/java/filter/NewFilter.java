@@ -127,7 +127,7 @@ public class NewFilter implements Filter {
             }
             chain.doFilter(request, response);
         } else {
-            if ( uri.contains("bookController")||uri.contains("/admin")) {
+            if ( uri.contains("/book")||uri.contains("/admin")) {
                 res.sendRedirect(req.getContextPath() + "/Login");
             } else {
                 chain.doFilter(request, response);

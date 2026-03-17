@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dal.serviceDAO;
+import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,16 +12,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
-import model.Service;
+import jakarta.servlet.http.HttpSession;
+import java.math.BigDecimal;
+import model.Booking;
+import model.User;
 
 /**
  *
  * @author -HP-
  */
-@WebServlet(name = "ServiceController", urlPatterns = {"/Service"})
-
-public class ServiceController extends HttpServlet {
+@WebServlet(name = "BookingController", urlPatterns = {"/book"})
+public class BookingController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +41,10 @@ public class ServiceController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");
+            out.println("<title>Servlet BookingController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet BookingController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,14 +62,18 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        serviceDAO dao = new serviceDAO();
-
-        List<Service> services = dao.getAll();
-        for (Service s : services) {
-            System.out.println(s);
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
+        String serviceId = request.getParameter("serviceId");
+        if (u == null) {
+            session.setAttribute("redirect", "book?serviceId=" + serviceId);
+            response.sendRedirect("Login");
+            return;
         }
-        request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
+        String price = request.getParameter("price");
+        request.setAttribute("serviceId", serviceId);
+        request.setAttribute("price", price);
+        request.getRequestDispatcher("/views/user/book/book.jsp").forward(request, response);
     }
 
     /**
@@ -82,7 +87,39 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        processRequest(request, response);
+
+        String serviceId_raw = request.getParameter("serviceId");
+        String vehicle = request.getParameter("vehicleType");
+        String des = request.getParameter("problemDescription");
+        String price_raw = request.getParameter("price");
+
+        int serviceId = Integer.parseInt(serviceId_raw);
+
+        User u = (User) request.getSession().getAttribute("user");
+        if (u == null) {
+            response.sendRedirect("Login");
+            return;
+        }
+        
+        BigDecimal price;
+        if (price_raw == null || price_raw.trim().isEmpty()) {
+            price = new BigDecimal(0);
+        } else {
+            price = new BigDecimal(price_raw);
+        }
+
+        Booking b = new Booking();
+        b.setUserId(u.getId());
+        b.setServiceId(serviceId);
+        b.setVehicleType(vehicle);
+        b.setProblemDescription(des);
+        b.setStatus("Pending");
+        b.setBookingDate(java.time.LocalDateTime.now());
+        b.setTotalPrice(price);
+
+        new BookingDAO().insert(b);
+
+        response.sendRedirect("history");
     }
 
     /**

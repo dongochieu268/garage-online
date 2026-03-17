@@ -30,11 +30,6 @@
                             <label for="password">Password</label>
                             <input type="password" id="password" name="password" required="required" value="${requestScope.password}"/>
                         </div>
-                        <!--<div class="form-group">
-                            <label class="form-remember">
-                                <input type="checkbox"/>Remember Me
-                            </label><a class="form-recovery" href="#">Forgot Password?</a>
-                        </div>-->
                         <div>${requestScope.error}</div>
                         <div class="form-group">
                             <button type="submit">Log In</button>
