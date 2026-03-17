@@ -3,118 +3,153 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
 package dal;
+
+import java.math.BigDecimal;
 import java.util.List;
 import model.Booking;
 import java.sql.*;
+import java.time.LocalDateTime;
+
 
 import java.util.ArrayList;
+import model.BookingInfo;
+
 /**
  *
  * @author Admin
  */
-public class BookingDAO extends DBContext{
-    
-    
- 
+public class BookingDAO extends DBContext {
+
     //user dat lich
-    void insert (Booking b){
-            String sql = "INSERT INTO bookings "
-            + "( service_id, vehicle_type, problem_description, booking_date, status, total_price) "
-            + "VALUES ( ?, ?, ?, ?, ?, ?)";
+    void insert(Booking b) {
+        String sql = "INSERT INTO bookings "
+                + "( service_id, vehicle_type, problem_description, booking_date, status, total_price) "
+                + "VALUES ( ?, ?, ?, ?, ?, ?)";
 
-    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        
-        ps.setInt(1,b.getServiceId());
-        ps.setString(2, b.getVehicleType());
-        ps.setString(3, b.getProblemDescription());
-        ps.setTimestamp(4,Timestamp.valueOf(b.getBookingDate()));
-        ps.setString(5, b.getStatus());
-        ps.setBigDecimal(6, b.getTotalPrice());
+            ps.setInt(1, b.getServiceId());
+            ps.setString(2, b.getVehicleType());
+            ps.setString(3, b.getProblemDescription());
+            ps.setTimestamp(4, Timestamp.valueOf(b.getBookingDate()));
+            ps.setString(5, b.getStatus());
+            ps.setBigDecimal(6, b.getTotalPrice());
 
-        ps.executeUpdate();
+            ps.executeUpdate();
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
-    }
-    
+
     //user xem lich su theo user_id
-    List<Booking> getByUserId(int UserId){
+    List<Booking> getByUserId(int UserId) {
         List<Booking> list = new ArrayList<>();
-        String sql =  "SELECT * FROM users WHERE id = ?";
-            try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        String sql = "SELECT * FROM users WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        ps.setInt(1, UserId);
-        ResultSet rs = ps.executeQuery();
-        
-        while (rs.next()) {
-            Booking b = new Booking(
-                    rs.getInt("id"),
-                    rs.getInt("userId"),
-                    rs.getInt("serviceId"),
-                    rs.getString("vehicleType"),
-                    rs.getString("problemDescription"),
-                    rs.getTimestamp("bookingDate").toLocalDateTime(),
-                    rs.getString("status"),
-                    rs.getBigDecimal("totalPrice")
-            );
-            list.add(b);
+            ps.setInt(1, UserId);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Booking b = new Booking(
+                        rs.getInt("id"),
+                        rs.getInt("userId"),
+                        rs.getInt("serviceId"),
+                        rs.getString("vehicleType"),
+                        rs.getString("problemDescription"),
+                        rs.getTimestamp("bookingDate").toLocalDateTime(),
+                        rs.getString("status"),
+                        rs.getBigDecimal("totalPrice")
+                );
+                list.add(b);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
-    }
-
-    return list;
+        return list;
 
     }
-    
+
     // Admin xem all
-    List<Booking> getAll(){
-        
-    List<Booking> list = new ArrayList<>();
-    String sql = "SELECT * FROM bookings";
+    List<Booking> getAll() {
 
-    try (PreparedStatement ps = connection.prepareStatement(sql);
-         ResultSet rs = ps.executeQuery()) {
+        List<Booking> list = new ArrayList<>();
+        String sql = "SELECT * FROM bookings";
 
-        while (rs.next()) {
-            Booking b = new Booking(
-                    rs.getInt("id"),
-                    rs.getInt("userId"),
-                    rs.getInt("serviceId"),
-                    rs.getString("vehicleType"),
-                    rs.getString("problemDescription"),
-                    rs.getTimestamp("bookingDate").toLocalDateTime(),
-                    rs.getString("status"),
-                    rs.getBigDecimal("totalPrice")
-            );
-            list.add(b);
+        try (PreparedStatement ps = connection.prepareStatement(sql); ResultSet rs = ps.executeQuery()) {
+
+            while (rs.next()) {
+                Booking b = new Booking(
+                        rs.getInt("id"),
+                        rs.getInt("userId"),
+                        rs.getInt("serviceId"),
+                        rs.getString("vehicleType"),
+                        rs.getString("problemDescription"),
+                        rs.getTimestamp("bookingDate").toLocalDateTime(),
+                        rs.getString("status"),
+                        rs.getBigDecimal("totalPrice")
+                );
+                list.add(b);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return list;
     }
 
-    return list;
-    }
-    
     //update Status
-    void updateStatus(int id , String status){
-            String sql = "UPDATE bookings SET status = ? WHERE id = ?";
+    void updateStatus(int id, String status) {
+        String sql = "UPDATE bookings SET status = ? WHERE id = ?";
 
-    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
 
-        ps.setString(1, status);
-        ps.setInt(2, id);
-        ps.executeUpdate();
+            ps.setString(1, status);
+            ps.setInt(2, id);
+            ps.executeUpdate();
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
     }
+
+    public List<BookingInfo> getAllBookingInfo() {
+        String sql = "SELECT b.[id]\n"
+                + "      ,u.[name] as [userName]\n"
+                + "      ,u.[phone] as [userPhone]\n"
+                + "      ,s.[name] as [serviceName]\n"
+                + "      ,[vehicle_type]\n"
+                + "      ,[problem_description]\n"
+                + "      ,[booking_date]\n"
+                + "      ,[status]\n"
+                + "      ,[total_price]\n"
+                + "  FROM [dbo].[Bookings] b\n"
+                + "  join [Services] s on b.service_id = s.id\n"
+                + "  join Users u on b.[user_id] = u.id";
+        List<BookingInfo> list = new ArrayList<>();
+        try{
+            PreparedStatement stm = connection.prepareCall(sql);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                int id  = rs.getInt("id");
+                String userName = rs.getString("userName");
+                String userPhone = rs.getString("userPhone");
+                String serviceName = rs.getString("serviceName");
+                String type = rs.getString("vehicle_type");
+                String description = rs.getString("problem_description");
+                LocalDateTime date = rs.getTimestamp("booking_date").toLocalDateTime();
+                String status = rs.getString("status");
+                BigDecimal price = rs.getBigDecimal("total_price");
+                list.add(new BookingInfo(id, userName, userPhone, serviceName, type, description, date, status, price));
+            }
+        }catch(SQLException e){
+            
+        }
+        return list;
     }
-    
+
 }
-
-
