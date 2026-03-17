@@ -105,7 +105,8 @@ public class NewFilter implements Filter {
         String uri = req.getRequestURI();
         HttpSession session = req.getSession(false);
         // trang public
-        if (uri.contains("index.jsp") || uri.contains("Login")
+        if (uri.contains("index.jsp") 
+                || uri.contains("Login")
                 || uri.contains("/static/css/")
                 || uri.contains("/static/js/")
                 || uri.contains("/static/img/")
@@ -126,7 +127,7 @@ public class NewFilter implements Filter {
             }
             chain.doFilter(request, response);
         } else {
-            if ( uri.contains("bookController")) {
+            if ( uri.contains("bookController")||uri.contains("/admin")) {
                 res.sendRedirect(req.getContextPath() + "/Login");
             } else {
                 chain.doFilter(request, response);
