@@ -13,6 +13,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- CSS here -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="static/css/bootstrap.min.css">
         <link rel="stylesheet" href="static/css/owl.carousel.min.css">
         <link rel="stylesheet" href="static/css/magnific-popup.css">
@@ -73,18 +74,18 @@
                                     <div class="socail_links">
                                         <ul>
                                             <li>
-                                                <a href="#">
+                                                <a href="https://www.facebook.com/HocTruongReview"target="_blank">
                                                     <i class="fa fa-facebook-square"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-twitter"></i>
+                                                <a href="https://www.facebook.com/profile.php?id=61587132813821"target="_blank">
+                                                    <i class="fa fa-facebook-square"></i>
                                                 </a>
                                             </li>
                                             <li>
-                                                <a href="#">
-                                                    <i class="fa fa-instagram"></i>
+                                                <a href="https://www.facebook.com/profile.php?id=61588621231864"target="_blank">
+                                                    <i class="fa fa-facebook-square"></i>
                                                 </a>
                                             </li>
                                         </ul>
