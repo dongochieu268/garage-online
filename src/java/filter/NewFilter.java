@@ -100,37 +100,39 @@ public class NewFilter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response,
             FilterChain chain)
             throws IOException, ServletException {
-        
-         HttpServletRequest req = (HttpServletRequest) request;
-        HttpServletResponse res = (HttpServletResponse) response;
-
-        String uri = req.getRequestURI();
-        HttpSession session = req.getSession(false);
-
-// trang public
-        if (uri.contains("index.jsp") || uri.contains("Login") ||
-                uri.contains("/static/css/")||
-                uri.contains("/static/js/")||
-                uri.contains("/static/img/")||
-                uri.contains("/static/jss/"))
-        {
             chain.doFilter(request, response);
             return;
-        }
-
-// ktra login
-        if (session != null && session.getAttribute("user") != null) {
-            User user = (User) session.getAttribute("user");
-            // ko cho user vao trang admin
-            if (!"admin".equalsIgnoreCase(user.getRole()) && uri.contains("/admin")) {
-                res.sendRedirect(req.getContextPath() + "/index.jsp");
-                return;
-            }
-            chain.doFilter(request, response);
-        } else {
-            // chx login
-            res.sendRedirect(req.getContextPath() + "/index.jsp");
-        }
+        
+//         HttpServletRequest req = (HttpServletRequest) request;
+//        HttpServletResponse res = (HttpServletResponse) response;
+//
+//        String uri = req.getRequestURI();
+//        HttpSession session = req.getSession(false);
+//
+//// trang public
+//        if (uri.contains("index.jsp") || uri.contains("Login") ||
+//                uri.contains("/static/css/")||
+//                uri.contains("/static/js/")||
+//                uri.contains("/static/img/")||
+//                uri.contains("/static/jss/"))
+//        {
+//            chain.doFilter(request, response);
+//            return;
+//        }
+//
+//// ktra login
+//        if (session != null && session.getAttribute("user") != null) {
+//            User user = (User) session.getAttribute("user");
+//            // ko cho user vao trang admin
+//            if (!"admin".equalsIgnoreCase(user.getRole()) && uri.contains("/admin")) {
+//                res.sendRedirect(req.getContextPath() + "/index.jsp");
+//                return;
+//            }
+//            chain.doFilter(request, response);
+//        } else {
+//            // chx login
+//            res.sendRedirect(req.getContextPath() + "/index.jsp");
+//        }
     }
 
     /**

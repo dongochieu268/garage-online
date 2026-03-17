@@ -4,22 +4,25 @@
  */
 package controller;
 
-import dal.UserDAO;
-import jakarta.servlet.RequestDispatcher;
+import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
+import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
+import model.Booking;
 import model.User;
 
 /**
  *
  * @author -HP-
  */
-public class LoginController extends HttpServlet {
+@WebServlet(name = "HistoryController", urlPatterns = {"/history"})
+public class HistoryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -38,10 +41,10 @@ public class LoginController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet LoginController</title>");
+            out.println("<title>Servlet HistoryController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet LoginController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet HistoryController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -59,7 +62,20 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        request.getRequestDispatcher("/views/auth/Login.jsp").forward(request, response);
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
+
+        if (u == null) {
+            response.sendRedirect("Login");
+            return;
+        }
+
+        BookingDAO dao = new BookingDAO();
+        List<Booking> list = dao.getByUserId(u.getId());
+
+        request.setAttribute("bookings", list);
+
+        request.getRequestDispatcher("views/user/book/history.jsp").forward(request, response);
     }
 
     /**
@@ -73,33 +89,7 @@ public class LoginController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-
-        String username = request.getParameter("username");
-        String password = request.getParameter("password");
-
-        UserDAO dao = new UserDAO();
-        User user = dao.checkLogin(username, password);
-
-        if (user != null) {
-            HttpSession session = request.getSession();
-            session.setAttribute("user", user);
-
-            String redirect = (String) session.getAttribute("redirect");
-            if (redirect != null) {
-                session.removeAttribute("redirect");
-                response.sendRedirect(redirect);
-                return;
-            }
-            if ("admin".equalsIgnoreCase(user.getRole())) {
-                response.sendRedirect("/admin/dashboard");
-            } else {
-                response.sendRedirect("index.jsp");
-            }
-        } else {
-            RequestDispatcher rd = request.getRequestDispatcher("views/auth/Login.jsp");
-            request.setAttribute("error", "Username and password are not valid.");
-            rd.forward(request, response);
-        }
+        processRequest(request, response);
     }
 
     /**
