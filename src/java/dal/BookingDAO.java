@@ -4,11 +4,14 @@
  */
 package dal;
 
+
+import java.math.BigDecimal;
 import java.util.List;
 import model.Booking;
 import java.sql.*;
-
+import java.time.LocalDateTime;
 import java.util.ArrayList;
+import model.BookingInfo;
 
 /**
  *
@@ -47,10 +50,8 @@ public class BookingDAO extends DBContext {
         List<Booking> list = new ArrayList<>();
         String sql = "SELECT * FROM bookings WHERE user_id = ?";
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
-
             ps.setInt(1, userId);
             ResultSet rs = ps.executeQuery();
-
             while (rs.next()) {
                 Booking b = new Booking(
                         rs.getInt("id"),
@@ -75,7 +76,6 @@ public class BookingDAO extends DBContext {
 
     // Admin xem all
     public List<Booking> getAll() {
-
         List<Booking> list = new ArrayList<>();
         String sql = "SELECT * FROM bookings";
 
@@ -104,6 +104,7 @@ public class BookingDAO extends DBContext {
 
     //update Status
     public void updateStatus(int id, String status) {
+
         String sql = "UPDATE bookings SET status = ? WHERE id = ?";
 
         try (PreparedStatement ps = connection.prepareStatement(sql)) {
@@ -116,5 +117,38 @@ public class BookingDAO extends DBContext {
             e.printStackTrace();
         }
     }
-
+    public List<BookingInfo> getAllBookingInfo() {
+        String sql = "SELECT b.[id]\n"
+                + "      ,u.[name] as [userName]\n"
+                + "      ,u.[phone] as [userPhone]\n"
+                + "      ,s.[name] as [serviceName]\n"
+                + "      ,[vehicle_type]\n"
+                + "      ,[problem_description]\n"
+                + "      ,[booking_date]\n"
+                + "      ,[status]\n"
+                + "      ,[total_price]\n"
+                + "  FROM [dbo].[Bookings] b\n"
+                + "  join [Services] s on b.service_id = s.id\n"
+                + "  join Users u on b.[user_id] = u.id";
+        List<BookingInfo> list = new ArrayList<>();
+        try{
+            PreparedStatement stm = connection.prepareCall(sql);
+            ResultSet rs = stm.executeQuery();
+            while(rs.next()){
+                int id  = rs.getInt("id");
+                String userName = rs.getString("userName");
+                String userPhone = rs.getString("userPhone");
+                String serviceName = rs.getString("serviceName");
+                String type = rs.getString("vehicle_type");
+                String description = rs.getString("problem_description");
+                LocalDateTime date = rs.getTimestamp("booking_date").toLocalDateTime();
+                String status = rs.getString("status");
+                BigDecimal price = rs.getBigDecimal("total_price");
+                list.add(new BookingInfo(id, userName, userPhone, serviceName, type, description, date, status, price));
+            }
+        }catch(SQLException e){
+            
+        }
+        return list;
+    }
 }

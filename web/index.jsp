@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Montana</title>
+        <title>Garage Online </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,6 +13,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- CSS here -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="static/css/bootstrap.min.css">
         <link rel="stylesheet" href="static/css/owl.carousel.min.css">
         <link rel="stylesheet" href="static/css/magnific-popup.css">
@@ -34,6 +35,7 @@
 
         <!-- header-start -->
         <%@include file="/views/layout/header.jsp" %>
+
         <!-- header-end -->
 
         <!-- slider_area_start -->
@@ -75,12 +77,12 @@
                         <div class="about_info">
                             <div class="section_title mb-20px">
                                 <span>About Us</span>
-                                <h3>A Luxuries Hotel <br>
-                                    with Nature</h3>
+                                <h3>A Luxuries Garage  <br>
+                                    Online</h3>
                             </div>
-                            <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare
-                                dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-                                sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
+                            <p>Garage Online is a web-based platform that connects customers with vehicle repair services easily and conveniently.
+                                Users can book services, find trusted garages, and manage their vehicle maintenance online.
+                                The project aims to improve efficiency, transparency, and customer experience in the automotive repair industry.</p>
                             <a href="#" class="line-button">Learn More</a>
                         </div>
                     </div>
@@ -285,7 +287,7 @@
                                 </div>
                                 <div class="col-xl-6 col-md-6">
                                     <div class="phone_num">
-                                        <a href="#" class="mobile_no">+10 576 377 4789</a>
+                                        <a href="#" class="mobile_no">0862608900</a>
                                     </div>
                                 </div>
                             </div>
@@ -423,19 +425,19 @@
 
         <script src="static/js/main.js"></script>
         <script>
-                                    $('#datepicker').datepicker({
-                                        iconsLibrary: 'fontawesome',
-                                        icons: {
-                                            rightIcon: '<span class="fa fa-caret-down"></span>'
-                                        }
-                                    });
-                                    $('#datepicker2').datepicker({
-                                        iconsLibrary: 'fontawesome',
-                                        icons: {
-                                            rightIcon: '<span class="fa fa-caret-down"></span>'
-                                        }
+            $('#datepicker').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
+            });
+            $('#datepicker2').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
 
-                                    });
+            });
         </script>
 
 

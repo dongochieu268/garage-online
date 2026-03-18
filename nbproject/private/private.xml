@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam2.png</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/index.jsp</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam3.png</file>
@@ -11,6 +12,14 @@
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam.png</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.map</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/banner.png</file>
+=======
+            <file>file:/D:/Assigment%20PRJ/garage-online/web/views/layout/footer.jsp</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/web/views/layout/header.jsp</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/web/static/css/style.css</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/web/index.jsp</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/web/static/css/bootstrap.min.css</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/web/static/css/styles.css</file>
+>>>>>>> 557b7d0e927e6224d3316c37ca4aeb11fae39ad0
         </group>
     </open-files>
 </project-private>

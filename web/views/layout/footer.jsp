@@ -5,7 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<footer class="footer" >
+<footer class="footer" id="contact" >
     <div class="footer_top">
         <div class="container">
             <div class="row">
@@ -14,8 +14,8 @@
                         <h3 class="footer_title">
                             address
                         </h3>
-                        <p class="footer_text" >  200, Green road, Mongla, <br>
-                            New Yor City USA</p>
+                        <p class="footer_text" > FPT University Hola <br>
+                            Ha Noi Viet Nam</p>
                         <a href="#" class="line-button">Get Direction</a>
                     </div>
                 </div>
@@ -24,8 +24,8 @@
                         <h3 class="footer_title">
                             Reservation
                         </h3>
-                        <p class="footer_text" >+10 367 267 2678 <br>
-                            reservation@montana.com</p>
+                        <p class="footer_text" >0862608900 <br>
+                            xekhoe@.com</p>
                     </div>
                 </div>
                 <div class="col-xl-2 col-md-6 col-lg-2">
@@ -63,7 +63,8 @@
                 <div class="col-xl-8 col-md-7 col-lg-9">
                     <p class="copy_right">
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
+                        Copyright &copy;<script>document.write(new Date().getFullYear());</script> 
+                        All rights reserved | This website is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by Garage Online Team
                         <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
                     </p>
                 </div>
@@ -71,18 +72,17 @@
                     <div class="socail_links">
                         <ul>
                             <li>
-                                <a href="#">
+                                <a href="https://www.facebook.com/HocTruongReview"target="_blank">
+                                    <i class="fa fa-facebook-square"></i></a>
+                            </li>
+                            <li>
+                                <a href="https://www.facebook.com/profile.php?id=61587132813821"target="_blank">
                                     <i class="fa fa-facebook-square"></i>
                                 </a>
                             </li>
                             <li>
-                                <a href="#">
-                                    <i class="fa fa-twitter"></i>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="#">
-                                    <i class="fa fa-instagram"></i>
+                                <a href="https://www.facebook.com/profile.php?id=61588621231864"target="_blank">
+                                    <i class="fa fa-facebook-square"></i>
                                 </a>
                             </li>
                         </ul>

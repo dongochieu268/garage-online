@@ -68,56 +68,12 @@
                                     <li>Price: ${s.price}</li>
                                     <li>${s.description}</li>
                                 </ul>
+
                                 <a class="book_now" href="book?serviceId=${s.id}&price=${s.price}   ">book now</a>
+
                             </div>
                         </div>
                     </c:forEach>
-                    <br>
-                    <div class="col-xl-4 col-md-4">
-                        <div class="single_offers">
-                            <div class="about_thumb">
-                                <img src="${pageContext.request.contextPath}/static/img/offers/1.png" alt="">
-                            </div>
-                            <h3>Up to 35% savings on Club <br> 
-                                rooms and Suites</h3>
-                            <ul>
-                                <li>Luxaries condition</li>
-                                <li>3 Adults & 2 Children size</li>
-                                <li>Sea view side</li>
-                            </ul>
-                            <a href="#test-form" class="book_now popup-with-form">book now</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4">
-                        <div class="single_offers">
-                            <div class="about_thumb">
-                                <img src="${pageContext.request.contextPath}/static/img/offers/2.png" alt="">
-                            </div>
-                            <h3>Up to 35% savings on Club <br> 
-                                rooms and Suites</h3>
-                            <ul>
-                                <li>Luxaries condition</li>
-                                <li>3 Adults & 2 Children size</li>
-                                <li>Sea view side</li>
-                            </ul>
-                            <a href="#" class="book_now">book now</a>
-                        </div>
-                    </div>
-                    <div class="col-xl-4 col-md-4">
-                        <div class="single_offers">
-                            <div class="about_thumb">
-                                <img src="${pageContext.request.contextPath}/static/img/offers/3.png" alt="">
-                            </div>
-                            <h3>Up to 35% savings on Club <br> 
-                                rooms and Suites</h3>
-                            <ul>
-                                <li>Luxaries condition</li>
-                                <li>3 Adults & 2 Children size</li>
-                                <li>Sea view side</li>
-                            </ul>
-                            <a href="#" class="book_now">book now</a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -144,7 +100,7 @@
                                 <span>From $250/night</span>
                                 <h3>Superior Room</h3>
                             </div>
-                            <a href="#" class="line-button">book now</a>
+                            <a href="bookController" class="line-button">book now</a>
                         </div>
                     </div>
                 </div>
@@ -156,7 +112,7 @@
                                 <span>From $250/night</span>
                                 <h3>Deluxe Room</h3>
                             </div>
-                            <a href="#" class="line-button">book now</a>
+                            <a href="bookController" class="line-button">book now</a>
                         </div>
                     </div>
                 </div>
@@ -168,7 +124,7 @@
                                 <span>From $250/night</span>
                                 <h3>Signature Room</h3>
                             </div>
-                            <a href="#" class="line-button">book now</a>
+                            <a href="bookController" class="line-button">book now</a>
                         </div>
                     </div>
                 </div>
@@ -180,7 +136,7 @@
                                 <span>From $250/night</span>
                                 <h3>Couple Room</h3>
                             </div>
-                            <a href="#" class="line-button">book now</a>
+                            <a href="bookControler" class="line-button">book now</a>
                         </div>
                     </div>
                 </div>

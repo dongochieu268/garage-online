@@ -16,19 +16,9 @@
                                 <ul id="navigation">
                                     <li><a class="active" href="index.jsp">home</a></li>
                                     <li><a href="Service">service</a></li>
-                                    <li><a href="about.html">About</a></li>
-                                    <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="blog.html">blog</a></li>
-                                            <li><a href="single-blog.html">single-blog</a></li>
-                                        </ul>
+                                    <li>
+                                        <a href="#contact">Contact</a>
                                     </li>
-                                    <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                        <ul class="submenu">
-                                            <li><a href="elements.html">elements</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="contact.html">Contact</a></li>
                                 </ul>
                             </nav>
                         </div>
@@ -45,24 +35,24 @@
                             <div class="socail_links">
                                 <ul>
                                     <li>
-                                        <a href="#">
+                                        <a href="https://www.facebook.com/HocTruongReview"target="_blank">
                                             <i class="fa fa-facebook-square"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
+                                        <a href="https://www.facebook.com/profile.php?id=61587132813821"target="_blank">
+                                            <i class="fa fa-facebook-square"></i>
                                         </a>
                                     </li>
                                     <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
+                                        <a href="https://www.facebook.com/profile.php?id=61588621231864"target="_blank">
+                                            <i class="fa fa-facebook-square"></i>
                                         </a>
                                     </li>
                                 </ul>
                             </div>
                             <div class="book_btn d-none d-lg-block">
-                                <a class="popup-with-form" href="#test-form">Book A Room</a>
+                                <a class="popup-with-form" href="#test-form">Book A Service</a>
                             </div>
 
                             <% if(session.getAttribute("user")==null){%>
