@@ -22,66 +22,83 @@ public class UserDAO extends DBContext {
     public User GetById(int id) {
         User user = null;
         try {
-            String strSQL = "select * from Users where id = ?";
-            stm = connection.prepareCall(strSQL);
+            String strSQL = "SELECT id, name, phone, password, role_id, balance FROM Users WHERE id = ?";
+            stm = connection.prepareStatement(strSQL);
             stm.setInt(1, id);
             rs = stm.executeQuery();
-            while (rs.next()) {
-                int Id = rs.getInt("Id");
-                String name = rs.getString("name");
-                String phone = rs.getString("phone");
-                String password = rs.getString("password");
-                String role = rs.getString("role");
 
-                user = new User(id, name, phone, password, role);
-
+            if (rs.next()) {
+                user = new User(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("phone"),
+                        rs.getString("password"),
+                        rs.getInt("role_id"),
+                        rs.getDouble("balance")
+                );
             }
         } catch (Exception ex) {
-            System.out.println("GetById:" + ex.getMessage());
+            System.out.println("GetById: " + ex.getMessage());
         }
         return user;
     }
 
     public boolean insert(User user) {
-
         try {
-            String strSQL = "INSERT INTO [dbo].[Users]\n"
-                    + "           ([name]\n"
-                    + "           ,[phone]\n"
-                    + "           ,[password]\n"
-                    + "           ,[role])\n"
-                    + "     VALUES\n"
-                    + "           (?\n"
-                    + "           ,?\n"
-                    + "           ,?\n"
-                    + "           ,?)";
+            String strSQL = "INSERT INTO Users (name, phone, password, role_id, balance) VALUES (?, ?, ?, ?, ?)";
+
             stm = connection.prepareStatement(strSQL);
             stm.setString(1, user.getName());
             stm.setString(2, user.getPhone());
-            stm.setString(3, user.getPassWord());
-            stm.setString(4, user.getRole());
+            stm.setString(3, user.getPassWord()); // đúng với class
+            stm.setInt(4, user.getRoleId());
+            stm.setDouble(5, user.getBalance());
+
             stm.executeUpdate();
             return true;
         } catch (Exception ex) {
-            System.out.println("insert:" + ex.getMessage());
+            System.out.println("insert: " + ex.getMessage());
         }
         return false;
-    }   
+    }
 
     public User checkLogin(String username, String password) {
         try {
-            String strSQL = "select * from Users where name = ? and password = ?";
-            stm = connection.prepareCall(strSQL);
+            String strSQL = "SELECT id, name, phone, password, role_id, balance FROM Users WHERE name = ? AND password = ?";
+            stm = connection.prepareStatement(strSQL);
             stm.setString(1, username);
             stm.setString(2, password);
+
             ResultSet rs = stm.executeQuery();
-            
+
             if (rs.next()) {
-                return new User(rs.getInt("id"), rs.getString("name"), rs.getString("phone"), rs.getString("passWord"), rs.getString("role"));
+                return new User(
+                        rs.getInt("id"),
+                        rs.getString("name"),
+                        rs.getString("phone"),
+                        rs.getString("password"), // map vào passWord
+                        rs.getInt("role_id"),
+                        rs.getDouble("balance")
+                );
             }
         } catch (Exception ex) {
-            System.out.println("checkLogin:" + ex.getMessage());
+            System.out.println("checkLogin: " + ex.getMessage());
         }
         return null;
+    }
+
+    public boolean updateBalance(int userId, double newBalance) {
+        try {
+            String strSQL = "UPDATE Users SET balance = ? WHERE id = ?";
+            stm = connection.prepareStatement(strSQL);
+            stm.setDouble(1, newBalance);
+            stm.setInt(2, userId);
+
+            int rows = stm.executeUpdate();
+            return rows > 0;
+        } catch (Exception ex) {
+            System.out.println("updateBalance: " + ex.getMessage());
+        }
+        return false;
     }
 }

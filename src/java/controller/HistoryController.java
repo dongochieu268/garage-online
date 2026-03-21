@@ -14,7 +14,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.Booking;
+import model.BookingInfo;
 import model.User;
 
 /**
@@ -71,7 +71,7 @@ public class HistoryController extends HttpServlet {
         }
 
         BookingDAO dao = new BookingDAO();
-        List<Booking> list = dao.getByUserId(u.getId());
+        List<BookingInfo> list = dao.getByUserId(u.getId());
 
         request.setAttribute("bookings", list);
 

@@ -9,7 +9,6 @@ package model;
  * @author -HP-
  */
 public class Role {
-
     private int id;
     private String name;
 

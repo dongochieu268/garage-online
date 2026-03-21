@@ -286,4 +286,88 @@ public class BookingDAO extends DBContext {
 
         return 0;
     }
+    // them doan nay
+
+    public double getTotalRevenue() {
+        String sql = "SELECT COALESCE(SUM(total_price),0) FROM Bookings";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getDouble(1);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return 0;
+    }
+
+    public int getTotalBookings() {
+        String sql = "SELECT COUNT(*) FROM Bookings";
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt(1);
+            }
+        } catch (Exception e) {
+        }
+        return 0;
+    }
+
+    public String getTopService() {
+        String sql = """
+        SELECT TOP 1 s.name
+        FROM Bookings b
+        JOIN Service s ON b.service_id = s.id
+        GROUP BY s.name
+        ORDER BY COUNT(*) DESC
+    """;
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getString(1);
+            }
+        } catch (Exception e) {
+        }
+        return "N/A";
+    }
+
+    public List<BookingInfo> getRecentBookings() {
+        List<BookingInfo> list = new ArrayList<>();
+        String sql = """
+        SELECT TOP 5 
+            b.id, u.name, u.phone, s.name, v.name,
+            b.problem_description, b.booking_date, st.name, b.total_price
+        FROM Bookings b
+        JOIN Users u ON b.user_id = u.id
+        JOIN Service s ON b.service_id = s.id
+        JOIN Vehicle v ON b.vehicle_id = v.id
+        JOIN Status st ON b.status_id = st.id
+        ORDER BY b.booking_date DESC
+    """;
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(sql);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                list.add(new BookingInfo(
+                        rs.getInt(1),
+                        rs.getString(2),
+                        rs.getString(3),
+                        rs.getString(4),
+                        rs.getString(5),
+                        rs.getString(6),
+                        rs.getTimestamp(7),
+                        rs.getString(8),
+                        rs.getDouble(9)
+                ));
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return list;
+    }
 }
