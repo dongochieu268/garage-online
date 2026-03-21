@@ -102,32 +102,48 @@ public class NewFilter implements Filter {
             throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         HttpServletResponse res = (HttpServletResponse) response;
+
         String uri = req.getRequestURI();
         HttpSession session = req.getSession(false);
-        // trang public
-        if (uri.contains("index.jsp") 
+
+        // ================= PUBLIC PAGE =================
+        if (uri.contains("index.jsp")
                 || uri.contains("Login")
-                || uri.contains("/static/css/")
-                || uri.contains("/static/js/")
-                || uri.contains("/static/img/")
-                || uri.contains("/static/jss/")
                 || uri.contains("register")
-                || uri.contains("/Service")) {
+                || uri.contains("Service")
+                || uri.contains("Category")
+                || uri.contains("Vehicle")
+                || uri.contains("css")
+                || uri.contains("js")
+                || uri.contains("img")
+                || uri.contains("static")) {
 
             chain.doFilter(request, response);
             return;
         }
-        // ktra login
+
+        // ================= CHECK LOGIN =================
         if (session != null && session.getAttribute("user") != null) {
+
             User user = (User) session.getAttribute("user");
-            // ko cho user vao trang admin
-            if (!"admin".equalsIgnoreCase(user.getRole()) && uri.contains("/admin")) {
+
+            // ================= ADMIN CHECK =================
+            // role_id = 1 là admin
+            if (uri.contains("/admin") && user.getRoleId() != 1) {
                 res.sendRedirect(req.getContextPath() + "/index.jsp");
                 return;
             }
+
             chain.doFilter(request, response);
         } else {
-            if ( uri.contains("/book")||uri.contains("/admin")) {
+
+            // ================= CHƯA LOGIN =================
+            if (uri.contains("/book")
+                    || uri.contains("/admin")
+                    || uri.contains("/payment")
+                    || uri.contains("/history")
+                    || uri.contains("/recharge")) {
+
                 res.sendRedirect(req.getContextPath() + "/Login");
             } else {
                 chain.doFilter(request, response);

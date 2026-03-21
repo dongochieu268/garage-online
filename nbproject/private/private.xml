@@ -4,6 +4,7 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
 <<<<<<< HEAD
+<<<<<<< HEAD
             <file>file:/D:/PRJ%20project/garage-online/src/java/model/Vehicle.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/model/Booking.java</file>
             <file>file:/D:/PRJ%20project/garage-online/src/java/model/Service.java</file>
@@ -50,6 +51,20 @@
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/layout/footer.jsp</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.css</file>
 >>>>>>> 7d84dc3b735ff0198c31f915a4edc81d6f2cfe63
+=======
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/CategoryDAO.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/BookingInfo.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/StatusDAO.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/VehicleDAO.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Category.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Status.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Booking.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Role.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Vehicle.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/BookingDAO.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/dal/RoleDAO.java</file>
+            <file>file:/D:/Assigment%20PRJ/garage-online/src/java/controller/BookingController.java</file>
+>>>>>>> 3178fef9e30311625ee9474fd3c866bca7a322f4
         </group>
     </open-files>
 </project-private>
