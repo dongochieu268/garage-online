@@ -4,36 +4,38 @@
  */
 package model;
 
-import java.math.BigDecimal;
-import java.time.LocalDateTime;
+
+import java.sql.Timestamp;
+
 
 /**
  *
  * @author ADMIN
  */
 public class BookingInfo {
+
     private int id;
     private String userName;
-    private String userPhone;
+    private String phone;
     private String serviceName;
-    private String vehicleType;
+    private String vehicleName;
     private String problemDescription;
-    private LocalDateTime bookingDate;
-    private String status;
-    private BigDecimal totalPrice;
+    private Timestamp bookingDate;
+    private String statusName;
+    double totalPrice;
 
     public BookingInfo() {
     }
 
-    public BookingInfo(int id, String userName, String userPhone, String serviceName, String vehicleType, String problemDescription, LocalDateTime bookingDate, String status, BigDecimal totalPrice) {
+    public BookingInfo(int id, String userName, String phone, String serviceName, String vehicleName, String problemDescription, Timestamp bookingDate, String statusName, double totalPrice) {
         this.id = id;
         this.userName = userName;
-        this.userPhone = userPhone;
+        this.phone = phone;
         this.serviceName = serviceName;
-        this.vehicleType = vehicleType;
+        this.vehicleName = vehicleName;
         this.problemDescription = problemDescription;
         this.bookingDate = bookingDate;
-        this.status = status;
+        this.statusName = statusName;
         this.totalPrice = totalPrice;
     }
 
@@ -53,12 +55,12 @@ public class BookingInfo {
         this.userName = userName;
     }
 
-    public String getUserPhone() {
-        return userPhone;
+    public String getPhone() {
+        return phone;
     }
 
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone;
+    public void setPhone(String phone) {
+        this.phone = phone;
     }
 
     public String getServiceName() {
@@ -69,12 +71,12 @@ public class BookingInfo {
         this.serviceName = serviceName;
     }
 
-    public String getVehicleType() {
-        return vehicleType;
+    public String getVehicleName() {
+        return vehicleName;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public void setVehicleName(String vehicleName) {
+        this.vehicleName = vehicleName;
     }
 
     public String getProblemDescription() {
@@ -85,36 +87,34 @@ public class BookingInfo {
         this.problemDescription = problemDescription;
     }
 
-    public LocalDateTime getBookingDate() {
+    public Timestamp getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDateTime bookingDate) {
+    public void setBookingDate(Timestamp bookingDate) {
         this.bookingDate = bookingDate;
     }
 
-    public String getStatus() {
-        return status;
+    public String getStatusName() {
+        return statusName;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public void setStatusName(String statusName) {
+        this.statusName = statusName;
     }
 
-    public BigDecimal getTotalPrice() {
+    public double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
     @Override
     public String toString() {
-        return "BookingInfo{" + "id=" + id + ", userName=" + userName + ", userPhone=" + userPhone + ", serviceName=" + serviceName + ", vehicleType=" + vehicleType + ", problemDescription=" + problemDescription + ", bookingDate=" + bookingDate + ", status=" + status + ", totalPrice=" + totalPrice + '}';
+        return "BookingInfo{" + "id=" + id + ", userName=" + userName + ", phone=" + phone + ", serviceName=" + serviceName + ", vehicleName=" + vehicleName + ", problemDescription=" + problemDescription + ", bookingDate=" + bookingDate + ", statusName=" + statusName + ", totalPrice=" + totalPrice + '}';
     }
 
-    
-    
     
 }

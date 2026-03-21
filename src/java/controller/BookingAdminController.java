@@ -59,7 +59,7 @@ public class BookingAdminController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
     throws ServletException, IOException {
         BookingDAO dao = new BookingDAO();
-        List<BookingInfo> bookings = dao.getAllBookingInfo();
+        List<BookingInfo> bookings = dao.getAll();
         request.setAttribute("bookings", bookings);
         request.getRequestDispatcher("/views/admin/booking/booking.jsp").forward(request, response);
     } 

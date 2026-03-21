@@ -4,16 +4,12 @@
  */
 package model;
 
-/**
- *
- * @author -HP-
- */
 public class Vehicle {
+
     private int id;
     private String name;
 
-    public Vehicle() {
-    }   
+
 
     public Vehicle(int id, String name) {
         this.id = id;
@@ -36,9 +32,11 @@ public class Vehicle {
         this.name = name;
     }
 
+
     @Override
     public String toString() {
         return "Vehicle{" + "id=" + id + ", name=" + name + '}';
     }
     
+
 }
