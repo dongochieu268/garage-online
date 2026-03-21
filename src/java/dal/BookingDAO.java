@@ -336,15 +336,16 @@ public class BookingDAO extends DBContext {
 
     public List<BookingInfo> getRecentBookings() {
         List<BookingInfo> list = new ArrayList<>();
+
         String sql = """
         SELECT TOP 5 
             b.id, u.name, u.phone, s.name, v.name,
             b.problem_description, b.booking_date, st.name, b.total_price
-        FROM Bookings b
-        JOIN Users u ON b.user_id = u.id
-        JOIN Service s ON b.service_id = s.id
-        JOIN Vehicle v ON b.vehicle_id = v.id
-        JOIN Status st ON b.status_id = st.id
+        FROM bookings b
+        JOIN users u ON b.user_id = u.id
+        JOIN services s ON b.service_id = s.id
+        JOIN vehicles v ON b.vehicle_id = v.id
+        JOIN statuses st ON b.status_id = st.id
         ORDER BY b.booking_date DESC
     """;
 
@@ -368,6 +369,7 @@ public class BookingDAO extends DBContext {
         } catch (Exception e) {
             e.printStackTrace();
         }
+
         return list;
     }
 }
