@@ -16,6 +16,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- CSS here -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/bootstrap.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/owl.carousel.min.css">
         <link rel="stylesheet" href="${pageContext.request.contextPath}/static/css/magnific-popup.css">
@@ -41,7 +42,7 @@
 
         <!-- bradcam_area_start -->
         <div class="bradcam_area breadcam_bg_1">
-            <h3>Laxaries Rooms</h3>
+            <h3>Garage Online</h3>
         </div>
         <!-- bradcam_area_end -->
 

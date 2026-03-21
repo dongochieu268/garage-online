@@ -6,21 +6,8 @@ package model;
 
 /**
  *
- * @author ADMIN
+ * @author -HP-
  */
-public class Service {
-    private int id;
-    private String name;
-    private double price;
-    private String description;
-    private String img;
-    private int categoryId;
-
-
-    public Service() {
-    }
-
+public class Role {
     
-    
-
 }

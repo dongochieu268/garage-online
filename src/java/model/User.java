@@ -13,18 +13,19 @@ public class User {
     public String name;
     public String phone;
     public String passWord;
-    public String role;
-
+    public int roleId;
+    public double balance;
+    
     public User() {
     }
 
-
-    public User(int id, String name, String phone, String passWord, String role) {
+    public User(int id, String name, String phone, String passWord, int roleId, double balance) {
         this.id = id;
         this.name = name;
         this.phone = phone;
         this.passWord = passWord;
-        this.role = role;
+        this.roleId = roleId;
+        this.balance = balance;
     }
 
     public int getId() {
@@ -59,24 +60,26 @@ public class User {
         this.passWord = passWord;
     }
 
-    public String getRole() {
-        return role;
+    public int getRoleId() {
+        return roleId;
     }
 
-    public void setRole(String role) {
-        this.role = role;
+    public void setRoleId(int roleId) {
+        this.roleId = roleId;
+    }
+
+    public double getBalance() {
+        return balance;
+    }
+
+    public void setBalance(double balance) {
+        this.balance = balance;
     }
 
     @Override
-public String toString() {
-    return "User{" +
-            "id=" + id +
-            ", name='" + name + '\'' +
-            ", phone='" + phone + '\'' +
-            ", role='" + role + '\'' +
-            '}';
-}
+    public String toString() {
+        return "User{" + "id=" + id + ", name=" + name + ", phone=" + phone + ", passWord=" + passWord + ", roleId=" + roleId + ", balance=" + balance + '}';
+    }
 
-    
     
 }

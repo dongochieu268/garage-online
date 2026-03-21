@@ -2,6 +2,7 @@
 <project-private xmlns="http://www.netbeans.org/ns/project-private/1">
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
+<<<<<<< HEAD
         <group>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam2.png</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam.png</file>
@@ -17,5 +18,8 @@
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.map</file>
             <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/user/book/history.jsp</file>
         </group>
+=======
+        <group/>
+>>>>>>> 3d692031d0ad1dfc0cb57a74c5da1f14a195aef8
     </open-files>
 </project-private>
