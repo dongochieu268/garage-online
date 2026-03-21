@@ -3,6 +3,7 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+<<<<<<< HEAD
             <file>file:/D:/Assigment%20PRJ/garage-online/src/java/controller/DashBoardController.java</file>
             <file>file:/D:/Assigment%20PRJ/garage-online/web/views/layout/header.jsp</file>
             <file>file:/D:/Assigment%20PRJ/garage-online/web/views/admin/service/update.jsp</file>
@@ -29,6 +30,51 @@
             <file>file:/D:/Assigment%20PRJ/garage-online/src/java/controller/BookingAdminController.java</file>
             <file>file:/D:/Assigment%20PRJ/garage-online/web/views/admin/layouts/footer.jsp</file>
             <file>file:/D:/Assigment%20PRJ/garage-online/src/java/model/Vehicle.java</file>
+=======
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/WEB-INF/ConnectDB.properties</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam2.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/User.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/StatusDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/user/book/book.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/CreateServiceController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Status.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/ServiceController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/index.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/bradcam3.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Vehicle.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/LoginController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/rooms/4.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/BookingInfo.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/WEB-INF/web.xml</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/rooms/1.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/serviceDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Booking.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/layout/header.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/banner/about_banner.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Category.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/BookingDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/UdateServiceController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/HistoryController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.map</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/user/book/history.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Service.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/filter/NewFilter.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/ServiceAdminController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/DBContext.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/BookingAdminController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/rooms/3.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/rooms/2.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/user/Service.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/BookingController.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/img/rooms/4_1.png</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/UserDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/model/Role.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/controller/RegisterServlet.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/src/java/dal/VehicleDAO.java</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/views/layout/footer.jsp</file>
+            <file>file:/C:/Users/-HP-/OneDrive/Desktop/neymar%20jr/garage-online/web/static/css/style.css</file>
+>>>>>>> 24673cf421cd33dff594e109db50400cac26b8db
         </group>
     </open-files>
 </project-private>

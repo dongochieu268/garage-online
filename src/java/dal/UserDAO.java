@@ -101,4 +101,33 @@ public class UserDAO extends DBContext {
         }
         return false;
     }
+
+    public boolean deductBalance(int userId, double amount) {
+        String sql = "UPDATE users SET balance = balance - ? WHERE id = ? AND balance >= ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setDouble(1, amount);
+            ps.setInt(2, userId);
+            ps.setDouble(3, amount);
+
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+    public boolean addBalance(int userId, double amount) {
+        String sql = "UPDATE users SET balance = balance + ? WHERE id = ?";
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setDouble(1, amount);
+            ps.setInt(2, userId);
+            return ps.executeUpdate() > 0;
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        return false;
+    }
+
+
 }

@@ -291,7 +291,8 @@ public class BookingDAO extends DBContext {
     // them doan nay
 
     public double getTotalRevenue() {
-        String sql = "SELECT COALESCE(SUM(total_price),0) FROM Bookings";
+        String sql = "SELECT COALESCE(SUM(total_price),0) FROM Bookings \n" +
+"where status_id = 5";
         try {
             PreparedStatement ps = connection.prepareStatement(sql);
             ResultSet rs = ps.executeQuery();
@@ -434,10 +435,11 @@ public class BookingDAO extends DBContext {
 
         return list;
     }
-    public List<BookingInfo> filterBookings(Integer statusId, Integer serviceId, Integer vehicleId) {
-    List<BookingInfo> list = new ArrayList<>();
 
-    String sql = """
+    public List<BookingInfo> filterBookings(Integer statusId, Integer serviceId, Integer vehicleId) {
+        List<BookingInfo> list = new ArrayList<>();
+
+        String sql = """
         SELECT 
             b.id,
             u.name as userName,
@@ -459,35 +461,45 @@ public class BookingDAO extends DBContext {
         ORDER BY b.booking_date DESC
     """;
 
-    try (PreparedStatement ps = connection.prepareStatement(sql)) {
-        ps.setObject(1, statusId);
-        ps.setObject(2, statusId);
-        ps.setObject(3, serviceId);
-        ps.setObject(4, serviceId);
-        ps.setObject(5, vehicleId);
-        ps.setObject(6, vehicleId);
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setObject(1, statusId);
+            ps.setObject(2, statusId);
+            ps.setObject(3, serviceId);
+            ps.setObject(4, serviceId);
+            ps.setObject(5, vehicleId);
+            ps.setObject(6, vehicleId);
 
-        ResultSet rs = ps.executeQuery();
+            ResultSet rs = ps.executeQuery();
 
-        while (rs.next()) {
-            BookingInfo b = new BookingInfo(
-                    rs.getInt("id"),
-                    rs.getString("userName"),
-                    rs.getString("phone"),
-                    rs.getString("serviceName"),
-                    rs.getString("vehicleName"),
-                    rs.getString("problem_description"),
-                    rs.getTimestamp("booking_date"),
-                    rs.getString("statusName"),
-                    rs.getDouble("total_price")
-            );
-            list.add(b);
+            while (rs.next()) {
+                BookingInfo b = new BookingInfo(
+                        rs.getInt("id"),
+                        rs.getString("userName"),
+                        rs.getString("phone"),
+                        rs.getString("serviceName"),
+                        rs.getString("vehicleName"),
+                        rs.getString("problem_description"),
+                        rs.getTimestamp("booking_date"),
+                        rs.getString("statusName"),
+                        rs.getDouble("total_price")
+                );
+                list.add(b);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
         }
 
-    } catch (SQLException e) {
-        e.printStackTrace();
+        return list;
     }
 
-    return list;
-}
+    public void markAsPaid(int bookingId) {
+        String sql = "UPDATE bookings SET status_id = 5 WHERE id = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setInt(1, bookingId);
+            ps.executeUpdate();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
 }

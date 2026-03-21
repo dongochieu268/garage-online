@@ -1,24 +1,16 @@
-<%-- 
-    Document   : history
-    Created on : Mar 17, 2026, 8:34:27 PM
-    Author     : -HP-
---%>
 <%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+
 <!DOCTYPE html>
 <html>
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
         <title>History</title>
-        <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
-        <!-- <link rel="manifest" href="site.webmanifest"> -->
-        <link rel="shortcut icon" type="image/x-icon" href="img/favicon.png">
-        <!-- Place favicon.ico in the root directory -->
-
-        <!-- CSS here -->
+        <!-- CSS GIỮ NGUYÊN -->
         <link rel="stylesheet" href="static/css/bootstrap.min.css">
         <link rel="stylesheet" href="static/css/owl.carousel.min.css">
         <link rel="stylesheet" href="static/css/magnific-popup.css">
@@ -33,25 +25,52 @@
     </head>
 
     <body>
+
         <%@include file="/views/layout/header.jsp" %>
+
         <div style="height: 100px; background: #000;"></div>
+
         <div class="container mt-5">
+
             <h2 class="text-center mb-4">Booking History</h2>
+
+            <!-- SỐ DƯ + NẠP TIỀN -->
+            <div class="mb-3">
+                <h5>
+                    💰 Số dư: 
+                    <span class="text-success">
+                        <fmt:formatNumber value="${sessionScope.user.balance}" type="number"/> VND
+                    </span>
+                </h5>
+
+                <form action="topup" method="post" class="mt-2 d-flex">
+                    <input type="number" name="amount" class="form-control w-25 me-2" placeholder="Nhập số tiền" required>
+                    <button class="btn btn-success">
+                        ➕ Nạp tiền
+                    </button>
+                </form>
+            </div>
+
+            <!-- MESSAGE -->
+            <c:if test="${not empty msg}">
+                <div class="alert alert-info">
+                    ${msg}
+                </div>
+            </c:if>
 
             <div class="list-group">
 
-                <!-- Nếu không có booking -->
+                <!-- KHÔNG CÓ BOOKING -->
                 <c:if test="${empty bookings}">
                     <div class="list-group-item text-center">
                         No booking found
                     </div>
                 </c:if>
 
-                <!-- Hiển thị danh sách booking -->
+                <!-- DANH SÁCH BOOKING -->
                 <c:forEach var="b" items="${bookings}">
                     <div class="list-group-item list-group-item-action flex-column align-items-start mb-3">
 
-                        <!-- Header: service + vehicle + date -->
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">
                                 Service: ${b.serviceName} - ${b.vehicleName}
@@ -61,12 +80,10 @@
                             </small>
                         </div>
 
-                        <!-- Problem description -->
                         <p class="mb-1">
                             <strong>Problem:</strong> ${b.problemDescription}
                         </p>
 
-                        <!-- Status + Price -->
                         <small>
                             Status: 
                             <span class="
@@ -78,57 +95,83 @@
                                   ">
                                 ${b.statusName}
                             </span>
-                            | Price: <fmt:formatNumber value="${b.totalPrice}" type="number"/> VND
+
+                            | Price: 
+                            <fmt:formatNumber value="${b.totalPrice}" type="number"/> VND
                         </small>
+
+                        <!-- THANH TOÁN -->
+                        <div class="mt-2">
+
+                            <!-- CHƯA THANH TOÁN -->
+                            <c:if test="${b.statusName != 'Done'}">
+                                <form action="pay" method="post">
+                                    <input type="hidden" name="id" value="${b.id}">
+                                    <button class="btn btn-primary btn-sm">
+                                        💳 Thanh toán
+                                    </button>
+                                </form>
+                            </c:if>
+
+                            <!-- ĐÃ THANH TOÁN -->
+                            <c:if test="${b.statusName == 'Done'}">
+                                <span class="badge bg-success">
+                                    ✔ Đã thanh toán
+                                </span>
+                            </c:if>
+
+                        </div>
 
                     </div>
                 </c:forEach>
 
             </div>
         </div>
-        <%@include file="/views/layout/footer.jsp" %>                
+
+        <%@include file="/views/layout/footer.jsp" %>
+
+        <!-- JS GIỮ NGUYÊN -->
+        <script src="static/js/vendor/modernizr-3.5.0.min.js"></script>
+        <script src="static/js/vendor/jquery-1.12.4.min.js"></script>
+        <script src="static/js/popper.min.js"></script>
+        <script src="static/js/bootstrap.min.js"></script>
+        <script src="static/js/owl.carousel.min.js"></script>
+        <script src="static/js/isotope.pkgd.min.js"></script>
+        <script src="static/js/ajax-form.js"></script>
+        <script src="static/js/waypoints.min.js"></script>
+        <script src="static/js/jquery.counterup.min.js"></script>
+        <script src="static/js/imagesloaded.pkgd.min.js"></script>
+        <script src="static/js/scrollIt.js"></script>
+        <script src="static/js/jquery.scrollUp.min.js"></script>
+        <script src="static/js/wow.min.js"></script>
+        <script src="static/js/nice-select.min.js"></script>
+        <script src="static/js/jquery.slicknav.min.js"></script>
+        <script src="static/js/jquery.magnific-popup.min.js"></script>
+        <script src="static/js/plugins.js"></script>
+        <script src="static/js/gijgo.min.js"></script>
+
+        <script src="static/js/contact.js"></script>
+        <script src="static/js/jquery.ajaxchimp.min.js"></script>
+        <script src="static/js/jquery.form.js"></script>
+        <script src="static/js/jquery.validate.min.js"></script>
+        <script src="static/js/mail-script.js"></script>
+
+        <script src="static/js/main.js"></script>
+
+        <script>
+            $('#datepicker').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
+            });
+            $('#datepicker2').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
+            });
+        </script>
+
     </body>
-
-    <script src="static/js/vendor/modernizr-3.5.0.min.js"></script>
-    <script src="static/js/vendor/jquery-1.12.4.min.js"></script>
-    <script src="static/js/popper.min.js"></script>
-    <script src="static/js/bootstrap.min.js"></script>
-    <script src="static/js/owl.carousel.min.js"></script>
-    <script src="static/js/isotope.pkgd.min.js"></script>
-    <script src="static/js/ajax-form.js"></script>
-    <script src="static/js/waypoints.min.js"></script>
-    <script src="static/js/jquery.counterup.min.js"></script>
-    <script src="static/js/imagesloaded.pkgd.min.js"></script>
-    <script src="static/js/scrollIt.js"></script>
-    <script src="static/js/jquery.scrollUp.min.js"></script>
-    <script src="static/js/wow.min.js"></script>
-    <script src="static/js/nice-select.min.js"></script>
-    <script src="static/js/jquery.slicknav.min.js"></script>
-    <script src="static/js/jquery.magnific-popup.min.js"></script>
-    <script src="static/js/plugins.js"></script>
-    <script src="static/js/gijgo.min.js"></script>
-
-    <!--contact js-->
-    <script src="static/js/contact.js"></script>
-    <script src="static/js/jquery.ajaxchimp.min.js"></script>
-    <script src="static/js/jquery.form.js"></script>
-    <script src="static/js/jquery.validate.min.js"></script>
-    <script src="static/js/mail-script.js"></script>
-
-    <script src="static/js/main.js"></script>
-    <script>
-        $('#datepicker').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-caret-down"></span>'
-            }
-        });
-        $('#datepicker2').datepicker({
-            iconsLibrary: 'fontawesome',
-            icons: {
-                rightIcon: '<span class="fa fa-caret-down"></span>'
-            }
-
-        });
-    </script>
 </html>
