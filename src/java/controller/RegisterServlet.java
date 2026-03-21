@@ -50,7 +50,7 @@ public class RegisterServlet extends HttpServlet {
             return;
         }
 
-        response.sendRedirect("login");
+        response.sendRedirect("Login");
     }
 
     @Override
