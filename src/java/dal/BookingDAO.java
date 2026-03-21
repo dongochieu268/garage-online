@@ -137,7 +137,7 @@ public class BookingDAO extends DBContext {
     }
 
     // ================= UPDATE STATUS =================
-    public void updateStatus(int bookingId, int statusId) {
+    public boolean updateStatus(int bookingId, int statusId) {
 
         String sql = "UPDATE bookings SET status_id = ? WHERE id = ?";
 
@@ -149,7 +149,9 @@ public class BookingDAO extends DBContext {
 
         } catch (SQLException e) {
             e.printStackTrace();
+            return false;
         }
+        return true;
     }
 
     // ================= GET BOOKING BY ID =================
@@ -372,4 +374,120 @@ public class BookingDAO extends DBContext {
 
         return list;
     }
+
+    public List<BookingInfo> filterBookings(Integer statusId, Integer serviceId, Integer vehicleId, int page, int pageSize) {
+        List<BookingInfo> list = new ArrayList<>();
+
+        String sql = """
+        SELECT 
+            b.id,
+            u.name as userName,
+            u.phone,
+            s.name as serviceName,
+            v.name as vehicleName,
+            b.problem_description,
+            b.booking_date,
+            st.name as statusName,
+            b.total_price
+        FROM bookings b
+        JOIN users u ON b.user_id = u.id
+        JOIN services s ON b.service_id = s.id
+        JOIN vehicles v ON b.vehicle_id = v.id
+        JOIN statuses st ON b.status_id = st.id
+        WHERE (? IS NULL OR b.status_id = ?)
+          AND (? IS NULL OR b.service_id = ?)
+          AND (? IS NULL OR b.vehicle_id = ?)
+        ORDER BY b.booking_date DESC
+        OFFSET ? ROWS FETCH NEXT ? ROWS ONLY
+    """;
+
+        try (PreparedStatement ps = connection.prepareStatement(sql)) {
+            ps.setObject(1, statusId);
+            ps.setObject(2, statusId);
+            ps.setObject(3, serviceId);
+            ps.setObject(4, serviceId);
+            ps.setObject(5, vehicleId);
+            ps.setObject(6, vehicleId);
+            ps.setInt(7, (page - 1) * pageSize);
+            ps.setInt(8, pageSize);
+
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                BookingInfo b = new BookingInfo(
+                        rs.getInt("id"),
+                        rs.getString("userName"),
+                        rs.getString("phone"),
+                        rs.getString("serviceName"),
+                        rs.getString("vehicleName"),
+                        rs.getString("problem_description"),
+                        rs.getTimestamp("booking_date"),
+                        rs.getString("statusName"),
+                        rs.getDouble("total_price")
+                );
+                list.add(b);
+            }
+
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return list;
+    }
+    public List<BookingInfo> filterBookings(Integer statusId, Integer serviceId, Integer vehicleId) {
+    List<BookingInfo> list = new ArrayList<>();
+
+    String sql = """
+        SELECT 
+            b.id,
+            u.name as userName,
+            u.phone,
+            s.name as serviceName,
+            v.name as vehicleName,
+            b.problem_description,
+            b.booking_date,
+            st.name as statusName,
+            b.total_price
+        FROM bookings b
+        JOIN users u ON b.user_id = u.id
+        JOIN services s ON b.service_id = s.id
+        JOIN vehicles v ON b.vehicle_id = v.id
+        JOIN statuses st ON b.status_id = st.id
+        WHERE (? IS NULL OR b.status_id = ?)
+          AND (? IS NULL OR b.service_id = ?)
+          AND (? IS NULL OR b.vehicle_id = ?)
+        ORDER BY b.booking_date DESC
+    """;
+
+    try (PreparedStatement ps = connection.prepareStatement(sql)) {
+        ps.setObject(1, statusId);
+        ps.setObject(2, statusId);
+        ps.setObject(3, serviceId);
+        ps.setObject(4, serviceId);
+        ps.setObject(5, vehicleId);
+        ps.setObject(6, vehicleId);
+
+        ResultSet rs = ps.executeQuery();
+
+        while (rs.next()) {
+            BookingInfo b = new BookingInfo(
+                    rs.getInt("id"),
+                    rs.getString("userName"),
+                    rs.getString("phone"),
+                    rs.getString("serviceName"),
+                    rs.getString("vehicleName"),
+                    rs.getString("problem_description"),
+                    rs.getTimestamp("booking_date"),
+                    rs.getString("statusName"),
+                    rs.getDouble("total_price")
+            );
+            list.add(b);
+        }
+
+    } catch (SQLException e) {
+        e.printStackTrace();
+    }
+
+    return list;
+}
 }

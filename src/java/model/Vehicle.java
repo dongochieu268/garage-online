@@ -6,6 +6,7 @@ public class Vehicle {
     private String name;
 
     public Vehicle() {
+
     }
 
     public Vehicle(int id, String name) {
@@ -28,7 +29,6 @@ public class Vehicle {
     public void setName(String name) {
         this.name = name;
     }
-
 
     @Override
     public String toString() {
