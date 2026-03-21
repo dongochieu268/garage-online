@@ -36,27 +36,32 @@
         <%@include file="/views/layout/header.jsp" %>
 
         <div style="height: 100px; background: #000;"></div>
-        <div class="container d-flex justify-content-center align-items-center" 
+        <div class="container d-flex justify-content-center align-items-center"
              style="min-height: 70vh; padding: 50px 0;">
 
-            <div class="form">
+            <div class="form" style="width: 400px;">
                 <div class="form-panel one">
-                    <div class="form-header">
-                        <h1>Booking Service</h1>
+                    <div class="form-header text-center mb-3">
+                        <h2>Booking Service</h2>
                     </div>
 
                     <div class="form-content">
                         <form action="book" method="post">
+
+                            <!-- Hidden data -->
                             <input type="hidden" name="serviceId" value="${serviceId}">
                             <input type="hidden" name="price" value="${price}">
-                            <div class="form-group">
-                                <label>Problem Description</label>
-                                <textarea name="problemDescription" required></textarea>
+
+                            <!-- Problem description -->
+                            <div class="form-group mb-3">
+                                <label>Description of Problem</label>
+                                <textarea name="problemDescription" class="form-control" required></textarea>
                             </div>
 
-                            <div class="form-group">
-                                <label>Vehicle</label>
-                                <select name="vehicleType" required>
+                            <!-- Vehicle selection -->
+                            <div class="form-group mb-3">
+                                <label>Select Vehicle</label>
+                                <select name="vehicleId" class="form-control" required>
                                     <option value="">-- Choose Vehicle --</option>
                                     <c:forEach var="v" items="${vehicles}">
                                         <option value="${v.id}">${v.name}</option>
@@ -64,9 +69,13 @@
                                 </select>
                             </div>
 
-                            <div class="form-group">
-                                <button type="submit">Book Now</button>
+                            <!-- Submit -->
+                            <div class="form-group text-center">
+                                <button type="submit" class="btn btn-primary w-100">
+                                    Book Now
+                                </button>
                             </div>
+
                         </form>
                     </div>
                 </div>

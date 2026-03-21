@@ -47,31 +47,38 @@
                     </div>
                 </c:if>
 
+                <!-- Hiển thị danh sách booking -->
                 <c:forEach var="b" items="${bookings}">
-                    <div class="list-group-item list-group-item-action flex-column align-items-start">
+                    <div class="list-group-item list-group-item-action flex-column align-items-start mb-3">
+
+                        <!-- Header: service + vehicle + date -->
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">
-                                Service ID: ${b.serviceId} - ${b.vehicleType}
+                                Service: ${b.serviceName} - ${b.vehicleName}
                             </h5>
                             <small>
                                 ${b.bookingDate}
                             </small>
                         </div>
+
+                        <!-- Problem description -->
                         <p class="mb-1">
-                            ${b.problemDescription}
+                            <strong>Problem:</strong> ${b.problemDescription}
                         </p>
+
+                        <!-- Status + Price -->
                         <small>
                             Status: 
                             <span class="
                                   <c:choose>
-                                  <c:when test='${b.status == "Pending"}'>text-warning</c:when>
-                                  <c:when test='${b.status == "Done"}'>text-success</c:when>
-                                  <c:otherwise>text-danger</c:otherwise>
+                                      <c:when test='${b.statusName == "Pending"}'>text-warning</c:when>
+                                      <c:when test='${b.statusName == "Done"}'>text-success</c:when>
+                                      <c:otherwise>text-danger</c:otherwise>
                                   </c:choose>
                                   ">
-                                ${b.status}
+                                ${b.statusName}
                             </span>
-                            | Price: ${b.totalPrice}
+                            | Price: <fmt:formatNumber value="${b.totalPrice}" type="number"/> VND
                         </small>
 
                     </div>
