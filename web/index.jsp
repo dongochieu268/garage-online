@@ -4,7 +4,7 @@
     <head>
         <meta charset="utf-8">
         <meta http-equiv="x-ua-compatible" content="ie=edge">
-        <title>Montana</title>
+        <title>Garage Online </title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,6 +13,7 @@
         <!-- Place favicon.ico in the root directory -->
 
         <!-- CSS here -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
         <link rel="stylesheet" href="static/css/bootstrap.min.css">
         <link rel="stylesheet" href="static/css/owl.carousel.min.css">
         <link rel="stylesheet" href="static/css/magnific-popup.css">
@@ -33,87 +34,8 @@
             <![endif]-->
 
         <!-- header-start -->
-        <header>
-            <div class="header-area ">
-                <div id="sticky-header" class="main-header-area">
-                    <div class="container-fluid p-0">
-                        <div class="row align-items-center no-gutters">
-                            <div class="col-xl-5 col-lg-6">
-                                <div class="main-menu  d-none d-lg-block">
-                                    <nav>
-                                        <ul id="navigation">
-                                            <li><a class="active" href="index.jsp">home</a></li>
-                                            <li><a href="Service">service</a></li>
-                                            <li><a href="about.html">About</a></li>
-                                            <li><a href="#">blog <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="blog.html">blog</a></li>
-                                                    <li><a href="single-blog.html">single-blog</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="#">pages <i class="ti-angle-down"></i></a>
-                                                <ul class="submenu">
-                                                    <li><a href="elements.html">elements</a></li>
-                                                </ul>
-                                            </li>
-                                            <li><a href="contact.html">Contact</a></li>
-                                        </ul>
-                                    </nav>
-                                </div>
-                            </div>
-                            <div class="col-xl-2 col-lg-2">
-                                <div class="logo-img">
-                                    <a href="index.html">
-                                        <img src="img/logo.png" alt="">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-xl-5 col-lg-4 d-none d-lg-block">
-                                <div class="book_room">
-                                    <div class="socail_links">
-                                        <ul>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-facebook-square"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-twitter"></i>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">
-                                                    <i class="fa fa-instagram"></i>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a class="popup-with-form" href="#test-form">Book A Room</a>
-                                    </div>
+        <%@include file="/views/layout/header.jsp" %>
 
-                                    <% if(session.getAttribute("user")==null){%>
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a  href="Login">Login</a>
-
-                                    </div>
-                                    <%}else{ %>
-                                    <div class="book_btn d-none d-lg-block">
-                                        <a  href="LogOutController">LogOut</a>
-
-                                    </div>
-                                    <% } %>
-                                </div>
-                            </div>
-                            <div class="col-12">
-                                <div class="mobile_menu d-block d-lg-none"></div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </header>
         <!-- header-end -->
 
         <!-- slider_area_start -->
@@ -124,8 +46,8 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="slider_text text-center">
-                                    <h3>Montana Resort</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
+                                    <h3>Garage Online</h3>
+                                    <p>Upgrade Your Driving Experience</p>
                                 </div>
                             </div>
                         </div>
@@ -136,32 +58,8 @@
                         <div class="row">
                             <div class="col-xl-12">
                                 <div class="slider_text text-center">
-                                    <h3>Life is Beautiful</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_slider d-flex align-items-center justify-content-center slider_bg_1">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="slider_text text-center">
-                                    <h3>Montana Resort</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="single_slider  d-flex align-items-center justify-content-center slider_bg_2">
-                    <div class="container">
-                        <div class="row">
-                            <div class="col-xl-12">
-                                <div class="slider_text text-center">
-                                    <h3>Life is Beautiful</h3>
-                                    <p>Unlock to enjoy the view of Martine</p>
+                                    <h3>Drive Click Fix</h3>
+                                    <p>Upgrade Your Driving Experience</p>
                                 </div>
                             </div>
                         </div>
@@ -179,12 +77,12 @@
                         <div class="about_info">
                             <div class="section_title mb-20px">
                                 <span>About Us</span>
-                                <h3>A Luxuries Hotel <br>
-                                    with Nature</h3>
+                                <h3>A Luxuries Garage  <br>
+                                    Online</h3>
                             </div>
-                            <p>Suscipit libero pretium nullam potenti. Interdum, blandit phasellus consectetuer dolor ornare
-                                dapibus enim ut tincidunt rhoncus tellus sollicitudin pede nam maecenas, dolor sem. Neque
-                                sollicitudin enim. Dapibus lorem feugiat facilisi faucibus et. Rhoncus.</p>
+                            <p>Garage Online is a web-based platform that connects customers with vehicle repair services easily and conveniently.
+                                Users can book services, find trusted garages, and manage their vehicle maintenance online.
+                                The project aims to improve efficiency, transparency, and customer experience in the automotive repair industry.</p>
                             <a href="#" class="line-button">Learn More</a>
                         </div>
                     </div>
@@ -389,7 +287,7 @@
                                 </div>
                                 <div class="col-xl-6 col-md-6">
                                     <div class="phone_num">
-                                        <a href="#" class="mobile_no">+10 576 377 4789</a>
+                                        <a href="#" class="mobile_no">0862608900</a>
                                     </div>
                                 </div>
                             </div>
@@ -446,92 +344,7 @@
         <!-- instragram_area_end -->
 
         <!-- footer -->
-        <footer class="footer">
-            <div class="footer_top">
-                <div class="container">
-                    <div class="row">
-                        <div class="col-xl-3 col-md-6 col-lg-3">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    address
-                                </h3>
-                                <p class="footer_text"> 200, Green road, Mongla, <br>
-                                    New Yor City USA</p>
-                                <a href="#" class="line-button">Get Direction</a>
-                            </div>
-                        </div>
-                        <div class="col-xl-3 col-md-6 col-lg-3">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Reservation
-                                </h3>
-                                <p class="footer_text">+10 367 267 2678 <br>
-                                    reservation@montana.com</p>
-                            </div>
-                        </div>
-                        <div class="col-xl-2 col-md-6 col-lg-2">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Navigation
-                                </h3>
-                                <ul>
-                                    <li><a href="#">Home</a></li>
-                                    <li><a href="#">Rooms</a></li>
-                                    <li><a href="#">About</a></li>
-                                    <li><a href="#">News</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="col-xl-4 col-md-6 col-lg-4">
-                            <div class="footer_widget">
-                                <h3 class="footer_title">
-                                    Newsletter
-                                </h3>
-                                <form action="#" class="newsletter_form">
-                                    <input type="text" placeholder="Enter your mail">
-                                    <button type="submit">Sign Up</button>
-                                </form>
-                                <p class="newsletter_text">Subscribe newsletter to get updates</p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="copy-right_text">
-                <div class="container">
-                    <div class="footer_border"></div>
-                    <div class="row">
-                        <div class="col-xl-8 col-md-7 col-lg-9">
-                            <p class="copy_right">
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                                Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class="fa fa-heart-o" aria-hidden="true"></i> by <a href="https://colorlib.com" target="_blank">Colorlib</a>
-                                <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-                        </div>
-                        <div class="col-xl-4 col-md-5 col-lg-3">
-                            <div class="socail_links">
-                                <ul>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-facebook-square"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-twitter"></i>
-                                        </a>
-                                    </li>
-                                    <li>
-                                        <a href="#">
-                                            <i class="fa fa-instagram"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </footer>
+        <%@include file="/views/layout/footer.jsp" %>
 
         <!-- link that opens popup -->
 
@@ -612,19 +425,19 @@
 
         <script src="static/js/main.js"></script>
         <script>
-                                    $('#datepicker').datepicker({
-                                        iconsLibrary: 'fontawesome',
-                                        icons: {
-                                            rightIcon: '<span class="fa fa-caret-down"></span>'
-                                        }
-                                    });
-                                    $('#datepicker2').datepicker({
-                                        iconsLibrary: 'fontawesome',
-                                        icons: {
-                                            rightIcon: '<span class="fa fa-caret-down"></span>'
-                                        }
+            $('#datepicker').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
+            });
+            $('#datepicker2').datepicker({
+                iconsLibrary: 'fontawesome',
+                icons: {
+                    rightIcon: '<span class="fa fa-caret-down"></span>'
+                }
 
-                                    });
+            });
         </script>
 
 

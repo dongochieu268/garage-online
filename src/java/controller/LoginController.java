@@ -77,12 +77,19 @@ public class LoginController extends HttpServlet {
         String username = request.getParameter("username");
         String password = request.getParameter("password");
 
-        // Kiem tra username va password
         UserDAO dao = new UserDAO();
         User user = dao.checkLogin(username, password);
+
         if (user != null) {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
+
+            String redirect = (String) session.getAttribute("redirect");
+            if (redirect != null) {
+                session.removeAttribute("redirect");
+                response.sendRedirect(redirect);
+                return;
+            }
             if ("admin".equalsIgnoreCase(user.getRole())) {
                 response.sendRedirect("/admin/dashboard");
             } else {

@@ -4,7 +4,7 @@
  */
 package controller;
 
-import dal.serviceDAO;
+import dal.BookingDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -12,16 +12,17 @@ import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import jakarta.servlet.http.HttpSession;
 import java.util.List;
-import model.Service;
+import model.Booking;
+import model.User;
 
 /**
  *
  * @author -HP-
  */
-@WebServlet(name = "ServiceController", urlPatterns = {"/Service"})
-
-public class ServiceController extends HttpServlet {
+@WebServlet(name = "HistoryController", urlPatterns = {"/history"})
+public class HistoryController extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -40,10 +41,10 @@ public class ServiceController extends HttpServlet {
             out.println("<!DOCTYPE html>");
             out.println("<html>");
             out.println("<head>");
-            out.println("<title>Servlet ServiceController</title>");
+            out.println("<title>Servlet HistoryController</title>");
             out.println("</head>");
             out.println("<body>");
-            out.println("<h1>Servlet ServiceController at " + request.getContextPath() + "</h1>");
+            out.println("<h1>Servlet HistoryController at " + request.getContextPath() + "</h1>");
             out.println("</body>");
             out.println("</html>");
         }
@@ -61,14 +62,20 @@ public class ServiceController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
-        serviceDAO dao = new serviceDAO();
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
 
-        List<Service> services = dao.getAll();
-        for (Service s : services) {
-            System.out.println(s);
+        if (u == null) {
+            response.sendRedirect("Login");
+            return;
         }
-        request.setAttribute("services", services);
-        request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
+
+        BookingDAO dao = new BookingDAO();
+        List<Booking> list = dao.getByUserId(u.getId());
+
+        request.setAttribute("bookings", list);
+
+        request.getRequestDispatcher("views/user/book/history.jsp").forward(request, response);
     }
 
     /**
