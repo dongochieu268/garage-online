@@ -29,8 +29,11 @@ public class Vehicle {
         this.name = name;
     }
 
+
     @Override
     public String toString() {
         return "Vehicle{" + "id=" + id + ", name=" + name + '}';
     }
+
 }
+

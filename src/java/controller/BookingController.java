@@ -5,6 +5,7 @@
 package controller;
 
 import dal.BookingDAO;
+import dal.VehicleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,8 +14,11 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import model.Booking;
 import model.User;
+import model.Vehicle;
+import java.sql.Timestamp;
 
 /**
  *
@@ -63,15 +67,30 @@ public class BookingController extends HttpServlet {
             throws ServletException, IOException {
         HttpSession session = request.getSession();
         User u = (User) session.getAttribute("user");
+
         String serviceId = request.getParameter("serviceId");
+        String price = request.getParameter("price");
+
+        // Nếu chưa login
         if (u == null) {
-            session.setAttribute("redirect", "book?serviceId=" + serviceId);
+            session.setAttribute("redirect", "book?serviceId=" + serviceId + "&price=" + price);
             response.sendRedirect("Login");
             return;
         }
-        String price = request.getParameter("price");
+
+        if (serviceId == null || serviceId.isEmpty()) {
+            response.sendRedirect("services"); // quay về danh sách service
+            return;
+        }
+
+        // Lấy danh sách xe của user
+        VehicleDAO vdao = new VehicleDAO();
+        request.setAttribute("vehicles", vdao.getAll());
+
+        // Truyền serviceId + price sang JSP
         request.setAttribute("serviceId", serviceId);
-        request.setAttribute("price", price);
+        request.setAttribute("price", price != null ? price : "0");
+
         request.getRequestDispatcher("/views/user/book/book.jsp").forward(request, response);
     }
 
@@ -87,51 +106,68 @@ public class BookingController extends HttpServlet {
     protected void doPost(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
 
-        String serviceId_raw = request.getParameter("serviceId");
-        String vehicleId_raw = request.getParameter("vehicleId");
-        String des = request.getParameter("problemDescription");
-        String price_raw = request.getParameter("price");
-
-        int serviceId = Integer.parseInt(serviceId_raw);
-        int vehicleId = Integer.parseInt(vehicleId_raw);
-
-        User u = (User) request.getSession().getAttribute("user");
+        HttpSession session = request.getSession();
+        User u = (User) session.getAttribute("user");
 
         if (u == null) {
             response.sendRedirect("Login");
             return;
         }
 
+        // Lấy dữ liệu từ form
+        String serviceId_raw = request.getParameter("serviceId");
+        String vehicleId_raw = request.getParameter("vehicleId");
+        String des = request.getParameter("problemDescription");
+        String price_raw = request.getParameter("price");
+
+        int serviceId = 0;
+        int vehicleId = 0;
         double price = 0;
 
-        if (price_raw != null && !price_raw.isEmpty()) {
-            price = Double.parseDouble(price_raw);
+        try {
+            if (serviceId_raw != null && !serviceId_raw.isEmpty()) {
+                serviceId = Integer.parseInt(serviceId_raw);
+            }
+            if (vehicleId_raw != null && !vehicleId_raw.isEmpty()) {
+                vehicleId = Integer.parseInt(vehicleId_raw);
+            } else {
+                throw new Exception("Vehicle chưa chọn!");
+            }
+            if (price_raw != null && !price_raw.isEmpty()) {
+                price = Double.parseDouble(price_raw);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
+            response.sendRedirect("services");
+            return;
         }
 
+        // Tạo Booking object
         Booking b = new Booking();
-
         b.setUserId(u.getId());
         b.setServiceId(serviceId);
         b.setVehicleId(vehicleId);
         b.setProblemDescription(des);
         b.setStatusId(1); // Pending
-        b.setBookingDate(new java.sql.Timestamp(System.currentTimeMillis()));
+        b.setBookingDate(new Timestamp(System.currentTimeMillis()));
         b.setTotalPrice(price);
 
+        // Insert DB
         BookingDAO dao = new BookingDAO();
         dao.insert(b);
 
+        // Redirect sang trang history
         response.sendRedirect("history");
+
     }
 
-
-/**
- * Returns a short description of the servlet.
- *
- * @return a String containing servlet description
- */
-@Override
-public String getServletInfo() {
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
