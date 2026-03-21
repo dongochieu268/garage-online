@@ -22,7 +22,7 @@ public class BookingInfo {
     private String problemDescription;
     private Timestamp bookingDate;
     private String statusName;
-    double totalPrice;
+    private double totalPrice;
 
     public BookingInfo() {
     }
