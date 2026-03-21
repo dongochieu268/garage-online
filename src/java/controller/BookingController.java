@@ -13,7 +13,6 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
-import java.math.BigDecimal;
 import model.Booking;
 import model.User;
 
@@ -89,46 +88,50 @@ public class BookingController extends HttpServlet {
             throws ServletException, IOException {
 
         String serviceId_raw = request.getParameter("serviceId");
-        String vehicle = request.getParameter("vehicleType");
+        String vehicleId_raw = request.getParameter("vehicleId");
         String des = request.getParameter("problemDescription");
         String price_raw = request.getParameter("price");
 
         int serviceId = Integer.parseInt(serviceId_raw);
+        int vehicleId = Integer.parseInt(vehicleId_raw);
 
         User u = (User) request.getSession().getAttribute("user");
+
         if (u == null) {
             response.sendRedirect("Login");
             return;
         }
-        
-        BigDecimal price;
-        if (price_raw == null || price_raw.trim().isEmpty()) {
-            price = new BigDecimal(0);
-        } else {
-            price = new BigDecimal(price_raw);
+
+        double price = 0;
+
+        if (price_raw != null && !price_raw.isEmpty()) {
+            price = Double.parseDouble(price_raw);
         }
 
         Booking b = new Booking();
+
         b.setUserId(u.getId());
         b.setServiceId(serviceId);
-        b.setVehicleType(vehicle);
+        b.setVehicleId(vehicleId);
         b.setProblemDescription(des);
-        b.setStatus("Pending");
-        b.setBookingDate(java.time.LocalDateTime.now());
+        b.setStatusId(1); // Pending
+        b.setBookingDate(new java.sql.Timestamp(System.currentTimeMillis()));
         b.setTotalPrice(price);
 
-        new BookingDAO().insert(b);
+        BookingDAO dao = new BookingDAO();
+        dao.insert(b);
 
         response.sendRedirect("history");
     }
 
-    /**
-     * Returns a short description of the servlet.
-     *
-     * @return a String containing servlet description
-     */
-    @Override
-    public String getServletInfo() {
+
+/**
+ * Returns a short description of the servlet.
+ *
+ * @return a String containing servlet description
+ */
+@Override
+public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 

@@ -5,25 +5,27 @@
 package model;
 
 import java.time.LocalDateTime;
-import java.math.BigDecimal;
+import java.sql.Timestamp;
+
 /**
  *
  * @author Admin
  */
 public class Booking {
+
     private int id;
     private int userId;
     private int serviceId;
     private int vehicleId;
     private String problemDescription;
-    private LocalDateTime bookingDate;
+    private Timestamp bookingDate;
     private int statusId;
-    private BigDecimal totalPrice;
+    private Double totalPrice;
 
     public Booking() {
     }
 
-    public Booking(int id, int userId, int serviceId, int vehicleId, String problemDescription, LocalDateTime bookingDate, int statusId, BigDecimal totalPrice) {
+    public Booking(int id, int userId, int serviceId, int vehicleId, String problemDescription, Timestamp bookingDate, int statusId, Double totalPrice) {
         this.id = id;
         this.userId = userId;
         this.serviceId = serviceId;
@@ -74,11 +76,11 @@ public class Booking {
         this.problemDescription = problemDescription;
     }
 
-    public LocalDateTime getBookingDate() {
+    public Timestamp getBookingDate() {
         return bookingDate;
     }
 
-    public void setBookingDate(LocalDateTime bookingDate) {
+    public void setBookingDate(Timestamp bookingDate) {
         this.bookingDate = bookingDate;
     }
 
@@ -90,11 +92,11 @@ public class Booking {
         this.statusId = statusId;
     }
 
-    public BigDecimal getTotalPrice() {
+    public Double getTotalPrice() {
         return totalPrice;
     }
 
-    public void setTotalPrice(BigDecimal totalPrice) {
+    public void setTotalPrice(Double totalPrice) {
         this.totalPrice = totalPrice;
     }
 
@@ -103,5 +105,6 @@ public class Booking {
         return "Booking{" + "id=" + id + ", userId=" + userId + ", serviceId=" + serviceId + ", vehicleId=" + vehicleId + ", problemDescription=" + problemDescription + ", bookingDate=" + bookingDate + ", statusId=" + statusId + ", totalPrice=" + totalPrice + '}';
     }
 
-   
+    
+
 }
