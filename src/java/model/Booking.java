@@ -14,23 +14,23 @@ public class Booking {
     private int id;
     private int userId;
     private int serviceId;
-    private String vehicleType;
+    private int vehicleId;
     private String problemDescription;
     private LocalDateTime bookingDate;
-    private String status;
+    private int statusId;
     private BigDecimal totalPrice;
 
     public Booking() {
     }
 
-    public Booking(int id, int userId, int serviceId, String vehicleType, String problemDescription, LocalDateTime bookingDate, String status, BigDecimal totalPrice) {
+    public Booking(int id, int userId, int serviceId, int vehicleId, String problemDescription, LocalDateTime bookingDate, int statusId, BigDecimal totalPrice) {
         this.id = id;
         this.userId = userId;
         this.serviceId = serviceId;
-        this.vehicleType = vehicleType;
+        this.vehicleId = vehicleId;
         this.problemDescription = problemDescription;
         this.bookingDate = bookingDate;
-        this.status = status;
+        this.statusId = statusId;
         this.totalPrice = totalPrice;
     }
 
@@ -38,60 +38,60 @@ public class Booking {
         return id;
     }
 
-    public int getUserId() {
-        return userId;
-    }
-
-    public int getServiceId() {
-        return serviceId;
-    }
-
-    public String getVehicleType() {
-        return vehicleType;
-    }
-
-    public String getProblemDescription() {
-        return problemDescription;
-    }
-
-    public LocalDateTime getBookingDate() {
-        return bookingDate;
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public BigDecimal getTotalPrice() {
-        return totalPrice;
-    }
-
     public void setId(int id) {
         this.id = id;
+    }
+
+    public int getUserId() {
+        return userId;
     }
 
     public void setUserId(int userId) {
         this.userId = userId;
     }
 
+    public int getServiceId() {
+        return serviceId;
+    }
+
     public void setServiceId(int serviceId) {
         this.serviceId = serviceId;
     }
 
-    public void setVehicleType(String vehicleType) {
-        this.vehicleType = vehicleType;
+    public int getVehicleId() {
+        return vehicleId;
+    }
+
+    public void setVehicleId(int vehicleId) {
+        this.vehicleId = vehicleId;
+    }
+
+    public String getProblemDescription() {
+        return problemDescription;
     }
 
     public void setProblemDescription(String problemDescription) {
         this.problemDescription = problemDescription;
     }
 
+    public LocalDateTime getBookingDate() {
+        return bookingDate;
+    }
+
     public void setBookingDate(LocalDateTime bookingDate) {
         this.bookingDate = bookingDate;
     }
 
-    public void setStatus(String status) {
-        this.status = status;
+    public int getStatusId() {
+        return statusId;
+    }
+
+    public void setStatusId(int statusId) {
+        this.statusId = statusId;
+    }
+
+    public BigDecimal getTotalPrice() {
+        return totalPrice;
     }
 
     public void setTotalPrice(BigDecimal totalPrice) {
@@ -100,8 +100,8 @@ public class Booking {
 
     @Override
     public String toString() {
-        return "Booking{" + "id=" + id + ", userId=" + userId + ", serviceId=" + serviceId + ", vehicleType=" + vehicleType + ", problemDescription=" + problemDescription + ", bookingDate=" + bookingDate + ", status=" + status + ", totalPrice=" + totalPrice + '}';
+        return "Booking{" + "id=" + id + ", userId=" + userId + ", serviceId=" + serviceId + ", vehicleId=" + vehicleId + ", problemDescription=" + problemDescription + ", bookingDate=" + bookingDate + ", statusId=" + statusId + ", totalPrice=" + totalPrice + '}';
     }
 
-  
+   
 }
