@@ -19,7 +19,7 @@
             <div class="card shadow-sm border-0">
                 <div class="card-body">
 
-                    <h5 class="mb-4 fw-bold">🔍 Filter Bookings</h5>
+                    <h5 class="mb-4 fw-bold"> Filter Bookings</h5>
 
                     <form action="${pageContext.request.contextPath}/admin/booking" method="get">
 
