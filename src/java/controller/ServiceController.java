@@ -4,6 +4,7 @@
  */
 package controller;
 
+import dal.CategoryDAO;
 import dal.serviceDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -13,6 +14,7 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
+import model.Category;
 import model.Service;
 
 /**
@@ -62,12 +64,44 @@ public class ServiceController extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         serviceDAO dao = new serviceDAO();
+        CategoryDAO cdao = new CategoryDAO();
 
-        List<Service> services = dao.getAll();
-        for (Service s : services) {
-            System.out.println(s);
+        String categoryId_raw = request.getParameter("categoryId");
+        String min_raw = request.getParameter("minPrice");
+        String max_raw = request.getParameter("maxPrice");
+
+        Integer categoryId = null;
+        Double minPrice = null;
+        Double maxPrice = null;
+
+        try {
+            if (categoryId_raw != null && !categoryId_raw.isEmpty()) {
+                categoryId = Integer.parseInt(categoryId_raw);
+            }
+            if (min_raw != null && !min_raw.isEmpty()) {
+                minPrice = Double.parseDouble(min_raw);
+            }
+            if (max_raw != null && !max_raw.isEmpty()) {
+                maxPrice = Double.parseDouble(max_raw);
+            }
+        } catch (Exception e) {
+            e.printStackTrace();
         }
+
+        // ✅ FIX Ở ĐÂY
+        List<Service> services;
+
+        if (categoryId == null && minPrice == null && maxPrice == null) {
+            services = dao.getAll();
+        } else {
+            services = dao.filterServices(categoryId, minPrice, maxPrice, 1, 6);
+        }
+
+        List<Category> categories = cdao.getAll();
+
         request.setAttribute("services", services);
+        request.setAttribute("categories", categories);
+
         request.getRequestDispatcher("/views/user/Service.jsp").forward(request, response);
     }
 

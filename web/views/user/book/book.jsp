@@ -5,6 +5,7 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -57,9 +58,9 @@
                                 <label>Vehicle</label>
                                 <select name="vehicleType" required>
                                     <option value="">-- Choose Vehicle --</option>
-                                    <option value="Wave">Wave</option>
-                                    <option value="Vision">Vision</option>
-                                    <option value="Exciter">Exciter</option>
+                                    <c:forEach var="v" items="${vehicles}">
+                                        <option value="${v.id}">${v.name}</option>
+                                    </c:forEach>
                                 </select>
                             </div>
 

@@ -13,7 +13,6 @@ public class Vehicle {
 
     }
 
-
     public Vehicle(int id, String name) {
         this.id = id;
         this.name = name;
