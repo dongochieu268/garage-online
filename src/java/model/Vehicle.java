@@ -1,7 +1,3 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package model;
 
 public class Vehicle {
@@ -34,11 +30,12 @@ public class Vehicle {
         this.name = name;
     }
 
-
     @Override
     public String toString() {
         return "Vehicle{" + "id=" + id + ", name=" + name + '}';
     }
+
     
 
 }
+

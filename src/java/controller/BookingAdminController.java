@@ -1,89 +1,84 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/JSP_Servlet/Servlet.java to edit this template
- */
-
 package controller;
 
 import dal.BookingDAO;
+import dal.serviceDAO;
+import dal.StatusDAO;
+import dal.VehicleDAO;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.util.List;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.util.List;
 import model.BookingInfo;
 
-/**
- *
- * @author ADMIN
- */
-@WebServlet(name="BookingAdminController", urlPatterns={"/admin/booking"})
+@WebServlet(name = "BookingAdminController", urlPatterns = {"/admin/booking"})
 public class BookingAdminController extends HttpServlet {
-   
-    /** 
-     * Processes requests for both HTTP <code>GET</code> and <code>POST</code> methods.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet BookingAdminController</title>");  
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet BookingAdminController at " + request.getContextPath () + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
-    } 
 
-    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
-    /** 
-     * Handles the HTTP <code>GET</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        BookingDAO dao = new BookingDAO();
-        List<BookingInfo> bookings = dao.getAll();
-        request.setAttribute("bookings", bookings);
-        request.getRequestDispatcher("/views/admin/booking/booking.jsp").forward(request, response);
-    } 
+            throws ServletException, IOException {
 
-    /** 
-     * Handles the HTTP <code>POST</code> method.
-     * @param request servlet request
-     * @param response servlet response
-     * @throws ServletException if a servlet-specific error occurs
-     * @throws IOException if an I/O error occurs
-     */
-    @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response)
-    throws ServletException, IOException {
-        processRequest(request, response);
+        BookingDAO bdao = new BookingDAO();
+        StatusDAO sdao = new StatusDAO();
+        serviceDAO serviceDAO = new serviceDAO();
+        VehicleDAO vehicleDAO = new VehicleDAO();
+
+        String statusIdRaw = request.getParameter("statusId");
+        String serviceIdRaw = request.getParameter("serviceId");
+        String vehicleIdRaw = request.getParameter("vehicleId");
+
+        Integer statusId = null;
+        Integer serviceId = null;
+        Integer vehicleId = null;
+
+        try {
+            if (statusIdRaw != null && !statusIdRaw.trim().isEmpty()) {
+                statusId = Integer.parseInt(statusIdRaw);
+            }
+        } catch (Exception e) {
+            statusId = null;
+        }
+
+        try {
+            if (serviceIdRaw != null && !serviceIdRaw.trim().isEmpty()) {
+                serviceId = Integer.parseInt(serviceIdRaw);
+            }
+        } catch (Exception e) {
+            serviceId = null;
+        }
+
+        try {
+            if (vehicleIdRaw != null && !vehicleIdRaw.trim().isEmpty()) {
+                vehicleId = Integer.parseInt(vehicleIdRaw);
+            }
+        } catch (Exception e) {
+            vehicleId = null;
+        }
+
+        List<BookingInfo> bookings = bdao.filterBookings(statusId, serviceId, vehicleId);
+
+        request.setAttribute("bookings", bookings);
+        request.setAttribute("statuses", sdao.getAll());
+        request.setAttribute("services", serviceDAO.getAll());
+        request.setAttribute("vehicles", vehicleDAO.getAll());
+
+        request.setAttribute("selectedStatusId", statusId);
+        request.setAttribute("selectedServiceId", serviceId);
+        request.setAttribute("selectedVehicleId", vehicleId);
+
+        request.getRequestDispatcher("/views/admin/booking/booking.jsp").forward(request, response);
     }
 
-    /** 
-     * Returns a short description of the servlet.
-     * @return a String containing servlet description
-     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        doGet(request, response);
+    }
+
     @Override
     public String getServletInfo() {
-        return "Short description";
-    }// </editor-fold>
-
+        return "Booking admin controller";
+    }
 }

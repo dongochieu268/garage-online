@@ -146,7 +146,7 @@
 
                 <!-- FILTER -->
                 <div class="container mt-4">
-                    <form method="get" action="service#services-section" class="row g-3 align-items-end">
+                    <form method="get" action="Service#services-section" class="row g-3 align-items-end">
 
                         <!-- CATEGORY -->
                         <div class="col-md-4">
@@ -199,10 +199,13 @@
                                 <div class="card h-100 shadow-sm">
 
                                     <!-- IMAGE -->
-                                    <img src="${pageContext.request.contextPath}/${s.img}" 
+                                    <div class="img-thumbnail">
+                                        <img src="${pageContext.request.contextPath}/${s.img}" 
                                          class="card-img-top" 
                                          style="height:200px; object-fit:cover;" 
                                          alt="${s.name}">
+                                    </div>
+                                    
 
                                     <div class="card-body d-flex flex-column">
 

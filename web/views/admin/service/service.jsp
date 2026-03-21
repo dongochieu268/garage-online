@@ -15,42 +15,66 @@
     </head>
     <body>
         <%@include file="/views/admin/layouts/navbar.jsp" %>
-        <div class="container mt-4">
+        <div class="container mt-5">
 
-            <!-- Nút Create bên phải -->
-            <div class="d-flex justify-content-end mb-3">
-                <a class="btn btn-success" href="/admin/createService">Create</a>
+            <!-- Header -->
+            <div class="d-flex justify-content-between align-items-center mb-4">
+                <div>
+                    <h3 class="fw-bold mb-1">Service Management</h3>
+                    <p class="text-muted mb-0">Manage all services in the system</p>
+                </div>
+
+                <a class="btn btn-success px-4" href="${pageContext.request.contextPath}/admin/createService">
+                    + Create Service
+                </a>
             </div>
 
-            <!-- Bảng căn giữa -->
-            <div class="d-flex justify-content-center">
-                <table class="table table-hover w-90 text-center">
-                    <thead class="table-dark">
-                        <tr>
-                            <th scope="col">ID</th>
-                            <th scope="col">Name</th>
-                            <th scope="col">Price</th>
-                            <th scope="col">Description</th>
-                            <th scope="col">Action</th>
-                        </tr>
-                    </thead>
+            <!-- Table Card -->
+            <div class="card shadow-sm border-0 rounded-3">
+                <div class="card-body p-0">
+                    <div class="table-responsive">
+                        <table class="table table-hover align-middle text-center mb-0">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th>ID</th>
+                                    <th>Name</th>
+                                    <th>Price</th>
+                                    <th>Description</th>
+                                    <th style="width: 180px;">Action</th>
+                                </tr>
+                            </thead>
 
-                    <tbody>
-                        <c:forEach var="service" items="${services}">
-                            <tr>
-                                <td>${service.id}</td>
-                                <td>${service.name}</td>
-                                <td>${service.price}</td>
-                                <td>${service.description}</td>
-                                <td>
-                                    <a class="btn btn-warning btn-sm" href="/admin/updateService?id=${service.id}">Update</a>
-                                    <a class="btn btn-danger btn-sm" href="/admin/deleteService?id=${service.id}">Delete</a>
-                                </td>
-                            </tr>
-                        </c:forEach>
-                    </tbody>
+                            <tbody>
+                                <c:forEach var="service" items="${services}">
+                                    <tr>
+                                        <td class="fw-semibold">${service.id}</td>
+                                        <td>${service.name}</td>
+                                        <td class="text-primary fw-bold">${service.price}</td>
+                                        <td class="text-muted">${service.description}</td>
+                                        <td>
+                                            <a class="btn btn-outline-warning btn-sm me-1"
+                                               href="${pageContext.request.contextPath}/admin/updateService?id=${service.id}">
+                                                Update
+                                            </a>
+                                            <a class="btn btn-outline-danger btn-sm"
+                                               href="${pageContext.request.contextPath}/admin/deleteService?id=${service.id}">
+                                                Delete
+                                            </a>
+                                        </td>
+                                    </tr>
+                                </c:forEach>
 
-                </table>
+                                <c:if test="${empty services}">
+                                    <tr>
+                                        <td colspan="5" class="text-center text-muted py-4">
+                                            No services found
+                                        </td>
+                                    </tr>
+                                </c:if>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
 
         </div>

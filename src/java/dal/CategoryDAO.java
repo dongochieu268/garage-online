@@ -20,7 +20,7 @@ public class CategoryDAO extends DBContext {
 
         List<Category> list = new ArrayList<>();
 
-        String sql = "SELECT * FROM categories";
+        String sql = "SELECT * FROM Categories";
 
         try (PreparedStatement ps = connection.prepareStatement(sql);
              ResultSet rs = ps.executeQuery()) {
