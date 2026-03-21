@@ -5,6 +5,7 @@
 package controller;
 
 import dal.BookingDAO;
+import dal.VehicleDAO;
 import java.io.IOException;
 import java.io.PrintWriter;
 import jakarta.servlet.ServletException;
@@ -13,8 +14,10 @@ import jakarta.servlet.http.HttpServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import jakarta.servlet.http.HttpSession;
+import java.util.List;
 import model.Booking;
 import model.User;
+import model.Vehicle;
 
 /**
  *
@@ -70,6 +73,8 @@ public class BookingController extends HttpServlet {
             return;
         }
         String price = request.getParameter("price");
+        VehicleDAO vdao = new VehicleDAO();
+        request.setAttribute("vehicles", vdao.getAll());
         request.setAttribute("serviceId", serviceId);
         request.setAttribute("price", price);
         request.getRequestDispatcher("/views/user/book/book.jsp").forward(request, response);
@@ -124,14 +129,13 @@ public class BookingController extends HttpServlet {
         response.sendRedirect("history");
     }
 
-
-/**
- * Returns a short description of the servlet.
- *
- * @return a String containing servlet description
- */
-@Override
-public String getServletInfo() {
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
 
