@@ -84,21 +84,24 @@ public class LoginController extends HttpServlet {
             HttpSession session = request.getSession();
             session.setAttribute("user", user);
 
+            // redirect về trang trước nếu có
             String redirect = (String) session.getAttribute("redirect");
             if (redirect != null) {
                 session.removeAttribute("redirect");
                 response.sendRedirect(redirect);
                 return;
             }
-            if ("admin".equalsIgnoreCase(user.getRole())) {
-                response.sendRedirect("/admin/dashboard");
+
+            // ===== FIX ROLE =====
+            if (user.getRoleId() == 1) { // giả sử 1 = admin
+                response.sendRedirect("admin/dashboard");
             } else {
                 response.sendRedirect("index.jsp");
             }
+
         } else {
-            RequestDispatcher rd = request.getRequestDispatcher("views/auth/Login.jsp");
             request.setAttribute("error", "Username and password are not valid.");
-            rd.forward(request, response);
+            request.getRequestDispatcher("views/auth/Login.jsp").forward(request, response);
         }
     }
 
