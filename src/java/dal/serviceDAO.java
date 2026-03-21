@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 import model.Service;
 
-public class ServiceDAO extends DBContext {
+public class serviceDAO extends DBContext {
 
     PreparedStatement stm;
     ResultSet rs;
