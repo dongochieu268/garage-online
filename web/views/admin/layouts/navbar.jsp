@@ -5,26 +5,63 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
-<nav class="navbar navbar-expand-lg navbar-dark bg-primary  justify-content-between">
-  
-  <div class="collapse navbar-collapse" id="navbarNav">
-    <ul class="navbar-nav">
-      <li class="nav-item active">
-        <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/service">Services</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link" href="/admin/booking">Bookings</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link disabled" href="#">Disabled</a>
-      </li>
-    </ul>
-  </div>
-  <form class="form-inline d-flex">
-    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-    <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Search</button>
-  </form>
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary shadow-sm px-4">
+
+    <!-- Logo / Brand -->
+    <a class="navbar-brand fw-bold" href="${pageContext.request.contextPath}/">
+        Admin Panel
+    </a>
+
+    <!-- Toggle mobile -->
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+        <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <!-- Menu -->
+    <div class="collapse navbar-collapse" id="navbarNav">
+
+        <!-- Left menu -->
+        <ul class="navbar-nav me-auto">
+
+            <li class="nav-item">
+                <a class="nav-link ${pageContext.request.requestURI.contains('dashboard') ? 'active fw-bold' : ''}" 
+                   href="${pageContext.request.contextPath}/admin/dashboard">
+                    Home
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link ${pageContext.request.requestURI.contains('service') ? 'active fw-bold' : ''}" 
+                   href="${pageContext.request.contextPath}/admin/service">
+                    Services
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a class="nav-link ${pageContext.request.requestURI.contains('booking') ? 'active fw-bold' : ''}" 
+                   href="${pageContext.request.contextPath}/admin/booking">
+                    Bookings
+                </a>
+            </li>
+
+        </ul>
+
+        <!-- Right side -->
+        <div class="d-flex align-items-center gap-3">
+
+
+            <!-- User -->
+            <div class="dropdown">
+                <a class="btn btn-light btn-sm dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown">
+                    Admin
+                </a>
+                <ul class="dropdown-menu dropdown-menu-end">
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item text-danger" href="/LogOutController">Logout</a></li>
+                </ul>
+            </div>
+
+        </div>
+
+    </div>
 </nav>
