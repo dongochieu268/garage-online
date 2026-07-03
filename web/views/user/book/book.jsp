@@ -56,7 +56,7 @@
 
                             <div class="form-group">
                                 <label>Vehicle</label>
-                                <select name="vehicleType" required>
+                                <select name="vehicleId" required>
                                     <option value="">-- Choose Vehicle --</option>
                                     <c:forEach var="v" items="${vehicles}">
                                         <option value="${v.id}">${v.name}</option>

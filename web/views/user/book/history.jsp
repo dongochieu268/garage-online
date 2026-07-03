@@ -51,7 +51,7 @@
                     <div class="list-group-item list-group-item-action flex-column align-items-start">
                         <div class="d-flex w-100 justify-content-between">
                             <h5 class="mb-1">
-                                Service ID: ${b.serviceId} - ${b.vehicleType}
+                                ${b.serviceName} - ${b.vehicleName}
                             </h5>
                             <small>
                                 ${b.bookingDate}
@@ -61,15 +61,15 @@
                             ${b.problemDescription}
                         </p>
                         <small>
-                            Status: 
+                            Status:
                             <span class="
                                   <c:choose>
-                                  <c:when test='${b.status == "Pending"}'>text-warning</c:when>
-                                  <c:when test='${b.status == "Done"}'>text-success</c:when>
+                                  <c:when test='${b.statusName == "Pending"}'>text-warning</c:when>
+                                  <c:when test='${b.statusName == "Done"}'>text-success</c:when>
                                   <c:otherwise>text-danger</c:otherwise>
                                   </c:choose>
                                   ">
-                                ${b.status}
+                                ${b.statusName}
                             </span>
                             | Price: ${b.totalPrice}
                         </small>
